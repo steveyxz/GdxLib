@@ -32,6 +32,7 @@ public abstract class GdxGame extends ApplicationAdapter {
 		PooledEngine entityWorld = new PooledEngine();
 		gameWorld = new GameWorld(physicsWorld, entityWorld, batchSet);
 		LateDestroyer.init(gameWorld);
+		createOriginalEntities();
 	}
 
 	@Override
@@ -74,4 +75,9 @@ public abstract class GdxGame extends ApplicationAdapter {
 	 * @param delta The time in seconds since the last render
 	 */
 	protected abstract void update(float delta);
+
+	/**
+	 * Create all the entities here
+	 */
+	protected abstract void createOriginalEntities();
 }

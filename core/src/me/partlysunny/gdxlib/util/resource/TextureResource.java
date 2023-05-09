@@ -25,6 +25,7 @@ public class TextureResource implements Resource<Texture> {
     public TextureResource(Color color) {
         Pixmap pixmap = new Pixmap(1, 1, Pixmap.Format.RGBA8888);
         pixmap.setColor(color);
+        pixmap.drawPixel(0, 0);
         this.texture = new Texture(pixmap, false);
     }
 

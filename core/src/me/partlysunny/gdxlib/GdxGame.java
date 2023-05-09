@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -15,13 +16,16 @@ import me.partlysunny.gdxlib.ecs.systems.DestroyerSystem;
 import me.partlysunny.gdxlib.ecs.systems.LateDestroyer;
 import me.partlysunny.gdxlib.ecs.systems.render.BatchSet;
 import me.partlysunny.gdxlib.util.Debug;
+import me.partlysunny.gdxlib.util.camera.CameraHandler;
 import me.partlysunny.gdxlib.util.resource.ResourceManager;
+import me.partlysunny.gdxlib.util.resource.TextureResource;
 
 public abstract class GdxGame extends ApplicationAdapter {
 
 	protected GameWorld gameWorld;
 	protected BatchSet batchSet;
 	protected Camera camera = null;
+	protected CameraHandler cameraHandler = null;
 
 	@Override
 	public void create() {
@@ -30,7 +34,8 @@ public abstract class GdxGame extends ApplicationAdapter {
 		Debug.logDebug("Initializing sprite batches...");
 		batchSet = new BatchSet(new SpriteBatch(), new PolygonSpriteBatch());
 		Debug.logDebug("Initializing camera...");
-		camera = createCamera();
+		cameraHandler = createCameraHandler();
+		camera = cameraHandler.createCamera();
 		Debug.logDebug("Initializing game world...");
 		World physicsWorld = new World(getPhysicsGravity(), true);
 		PooledEngine entityWorld = new PooledEngine();
@@ -43,17 +48,23 @@ public abstract class GdxGame extends ApplicationAdapter {
 	@Override
 	public void render() {
 		//Clear the screen
-		ScreenUtils.clear(1, 0, 0, 1);
+		ScreenUtils.clear(0, 0, 0, 1);
 		float delta = Gdx.graphics.getDeltaTime();
 		//Update any custom logic that may exist
 		update(delta);
 		//Update the game world, rendering with a BatchSet
+		batchSet.setProjectionMatrix(camera.combined);
 		batchSet.begin();
 		gameWorld.update(delta);
 		batchSet.end();
 		//Destroy entities that were marked for destruction
 		LateDestroyer.update();
 		camera.update();
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		cameraHandler.updateViewport(camera, width, height);
 	}
 
 	@Override
@@ -87,9 +98,5 @@ public abstract class GdxGame extends ApplicationAdapter {
 	 */
 	protected abstract void createOriginalEntities();
 
-	/**
-	 * Create the camera for this game
-	 * @return A camera, probably an OrthographicCamera
-	 */
-	protected abstract Camera createCamera();
+	protected abstract CameraHandler createCameraHandler();
 }

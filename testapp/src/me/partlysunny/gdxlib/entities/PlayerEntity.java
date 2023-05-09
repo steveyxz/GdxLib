@@ -16,7 +16,7 @@ public class PlayerEntity extends SimpleEntityProvider {
 
     @Override
     protected RendererProvider getRendererProvider() {
-        return new ShapeTextureComponentProvider(Color.BLUE, ShapeBuilder.radialSquare(new Vector2(0, 0), 10));
+        return new ShapeTextureComponentProvider(Color.BLUE, ShapeBuilder.radialSquare(new Vector2(0, 0), 50));
     }
 
     @Override

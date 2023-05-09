@@ -25,9 +25,7 @@ public class ResourceManager {
 
     public <T> T get(String name, Class<T> type) {
         Resource<?> resource = resources.get(name);
-        if (resource == null) {
-            throw new RuntimeException("Resource not found: " + name);
-        }
+        if (resource == null) return null;
         Object internal = resource.getInternal();
         if (!type.isInstance(internal)) throw new RuntimeException("Resource " + name + " is not of type: " + type);
         return type.cast(internal);
@@ -55,13 +53,14 @@ public class ResourceManager {
         return resources.containsKey(resource);
     }
 
-    public TextureResource getColorResource(Color color) {
+    public Texture getColorTexture(Color color) {
         String colorKey = "color_" + color;
-        TextureResource textureResource = get(colorKey, TextureResource.class);
-        if (textureResource == null) {
-            textureResource = new TextureResource(color);
+        Texture texture = get(colorKey, Texture.class);
+        if (texture == null) {
+            TextureResource textureResource = new TextureResource(color);
             add(colorKey, textureResource);
+            texture = textureResource.getInternal();
         }
-        return textureResource;
+        return texture;
     }
 }

@@ -10,6 +10,9 @@ public class SimpleTextureComponent implements RendererComponent {
         this.texture = texture;
     }
 
+    public SimpleTextureComponent() {
+    }
+
     public Texture getTexture() {
         return texture;
     }

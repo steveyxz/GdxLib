@@ -5,10 +5,13 @@ import com.badlogic.gdx.physics.box2d.Body;
 
 public class Box2DPhysicsComponent implements PhysicsComponent {
 
-    private final Body linkedBody;
+    private Body linkedBody;
 
     public Box2DPhysicsComponent(Body linkedBody) {
         this.linkedBody = linkedBody;
+    }
+
+    public Box2DPhysicsComponent() {
     }
 
     public Body getLinkedBody() {

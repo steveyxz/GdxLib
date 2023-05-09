@@ -2,6 +2,7 @@ package me.partlysunny.gdxlib.ecs.systems.render;
 
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Matrix4;
 
 public class BatchSet {
 
@@ -34,5 +35,10 @@ public class BatchSet {
     public void dispose() {
         spriteBatch.dispose();
         polygonSpriteBatch.dispose();
+    }
+
+    public void setProjectionMatrix(Matrix4 combined) {
+        spriteBatch.setProjectionMatrix(combined);
+        polygonSpriteBatch.setProjectionMatrix(combined);
     }
 }

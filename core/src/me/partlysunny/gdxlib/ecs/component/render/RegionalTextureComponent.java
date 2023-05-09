@@ -10,6 +10,9 @@ public class RegionalTextureComponent implements RendererComponent {
         this.textureRegion = textureRegion;
     }
 
+    public RegionalTextureComponent() {
+    }
+
     public TextureRegion getTextureRegion() {
         return textureRegion;
     }

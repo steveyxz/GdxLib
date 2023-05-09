@@ -2,9 +2,12 @@ package me.partlysunny.gdxlib;
 
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.math.Vector2;
 import me.partlysunny.gdxlib.ecs.entity.EntityProvider;
 import me.partlysunny.gdxlib.entities.PlayerEntity;
+import me.partlysunny.gdxlib.util.camera.CameraHandler;
+import me.partlysunny.gdxlib.util.camera.OrthoCameraHandler;
 import me.partlysunny.gdxlib.util.resource.ResourceManager;
 import me.partlysunny.gdxlib.util.resource.TextureResource;
 
@@ -31,7 +34,7 @@ public class MainGame extends GdxGame {
     }
 
     @Override
-    protected Camera createCamera() {
-        return new OrthographicCamera();
+    protected CameraHandler createCameraHandler() {
+        return new OrthoCameraHandler(new Vector2(800, 400));
     }
 }

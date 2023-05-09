@@ -12,6 +12,9 @@ public class AnimatedTextureComponent implements RendererComponent {
         this.animation = animation;
     }
 
+    public AnimatedTextureComponent() {
+    }
+
     public Animation<TextureRegion> getAnimation() {
         return animation;
     }

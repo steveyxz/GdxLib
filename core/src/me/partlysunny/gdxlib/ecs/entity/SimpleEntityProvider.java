@@ -19,7 +19,7 @@ public abstract class SimpleEntityProvider implements EntityProvider {
         Entity entity = world.getEntityWorld().createEntity();
         addPosition(entity, originPosition);
         addRenderer(entity);
-        return null;
+        return entity;
     }
 
     private void addPosition(Entity e, Vector2 position) {

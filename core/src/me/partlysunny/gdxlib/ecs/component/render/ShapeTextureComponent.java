@@ -4,10 +4,13 @@ import com.badlogic.gdx.graphics.g2d.PolygonSprite;
 
 public class ShapeTextureComponent implements RendererComponent {
 
-    private final PolygonSprite polygonSprite;
+    private PolygonSprite polygonSprite;
 
     public ShapeTextureComponent(PolygonSprite polygonSprite) {
         this.polygonSprite = polygonSprite;
+    }
+
+    public ShapeTextureComponent() {
     }
 
     public PolygonSprite getPolygonSprite() {

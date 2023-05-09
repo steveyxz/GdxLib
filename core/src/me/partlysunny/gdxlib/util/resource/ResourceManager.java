@@ -1,6 +1,7 @@
 package me.partlysunny.gdxlib.util.resource;
 
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 
 import java.util.HashMap;
@@ -50,4 +51,17 @@ public class ResourceManager {
         }
     }
 
+    public boolean has(String resource) {
+        return resources.containsKey(resource);
+    }
+
+    public TextureResource getColorResource(Color color) {
+        String colorKey = "color_" + color;
+        TextureResource textureResource = get(colorKey, TextureResource.class);
+        if (textureResource == null) {
+            textureResource = new TextureResource(color);
+            add(colorKey, textureResource);
+        }
+        return textureResource;
+    }
 }

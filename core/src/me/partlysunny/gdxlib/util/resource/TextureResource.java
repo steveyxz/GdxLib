@@ -1,7 +1,10 @@
 package me.partlysunny.gdxlib.util.resource;
 
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class TextureResource implements Resource<Texture> {
 
@@ -17,6 +20,12 @@ public class TextureResource implements Resource<Texture> {
 
     public TextureResource(String path) {
         this.texture = new Texture(path);
+    }
+
+    public TextureResource(Color color) {
+        Pixmap pixmap = new Pixmap(1, 1, Pixmap.Format.RGBA8888);
+        pixmap.setColor(color);
+        this.texture = new Texture(pixmap, false);
     }
 
     @Override

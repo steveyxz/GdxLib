@@ -14,4 +14,14 @@ public class MainGame extends GdxGame {
     protected void loadResources() {
         ResourceManager.getInstance().add("logo", new TextureResource("badlogic.jpg"));
     }
+
+    @Override
+    protected void update(float delta) {
+
+    }
+
+    @Override
+    protected void createOriginalEntities() {
+
+    }
 }

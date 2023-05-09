@@ -39,6 +39,8 @@ public abstract class GdxGame extends ApplicationAdapter {
 		//Clear the screen
 		ScreenUtils.clear(1, 0, 0, 1);
 		float delta = Gdx.graphics.getDeltaTime();
+		//Update any custom logic that may exist
+		update(delta);
 		//Update the game world, rendering with a BatchSet
 		batchSet.begin();
 		gameWorld.update(delta);
@@ -65,4 +67,11 @@ public abstract class GdxGame extends ApplicationAdapter {
 	 * Use {@code ResourceManager.getInstance().add()} to load resources
 	 */
 	protected abstract void loadResources();
+
+	/**
+	 * Update the game world here (recommended to try to use entities, this is for any custom systems you may have)
+	 * It will run before the game world is updated
+	 * @param delta The time in seconds since the last render
+	 */
+	protected abstract void update(float delta);
 }

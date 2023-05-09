@@ -10,7 +10,7 @@ public abstract class SimpleEntityProvider implements EntityProvider {
 
     protected final GameWorld world;
 
-    protected SimpleEntityProvider(GameWorld world) {
+    public SimpleEntityProvider(GameWorld world) {
         this.world = world;
     }
 

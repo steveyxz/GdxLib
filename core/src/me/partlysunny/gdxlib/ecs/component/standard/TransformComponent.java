@@ -14,6 +14,11 @@ public class TransformComponent implements Component {
     private Vector2 position;
     private float rotation;
 
+    public TransformComponent() {
+        this.position = new Vector2();
+        this.rotation = 0;
+    }
+
     public TransformComponent(Vector2 position, float rotation) {
         this.position = position;
         this.rotation = rotation;

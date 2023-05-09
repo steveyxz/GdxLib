@@ -3,6 +3,7 @@ package me.partlysunny.gdxlib;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -18,8 +19,9 @@ import me.partlysunny.gdxlib.util.resource.ResourceManager;
 
 public abstract class GdxGame extends ApplicationAdapter {
 
-	private GameWorld gameWorld;
-	private BatchSet batchSet;
+	protected GameWorld gameWorld;
+	protected BatchSet batchSet;
+	protected Camera camera = null;
 
 	@Override
 	public void create() {
@@ -27,6 +29,8 @@ public abstract class GdxGame extends ApplicationAdapter {
 		loadResources();
 		Debug.logDebug("Initializing sprite batches...");
 		batchSet = new BatchSet(new SpriteBatch(), new PolygonSpriteBatch());
+		Debug.logDebug("Initializing camera...");
+		camera = createCamera();
 		Debug.logDebug("Initializing game world...");
 		World physicsWorld = new World(getPhysicsGravity(), true);
 		PooledEngine entityWorld = new PooledEngine();
@@ -34,6 +38,7 @@ public abstract class GdxGame extends ApplicationAdapter {
 		LateDestroyer.init(gameWorld);
 		createOriginalEntities();
 	}
+
 
 	@Override
 	public void render() {
@@ -48,8 +53,9 @@ public abstract class GdxGame extends ApplicationAdapter {
 		batchSet.end();
 		//Destroy entities that were marked for destruction
 		LateDestroyer.update();
+		camera.update();
 	}
-	
+
 	@Override
 	public void dispose () {
 		//Dispose of all resources
@@ -80,4 +86,10 @@ public abstract class GdxGame extends ApplicationAdapter {
 	 * Create all the entities here
 	 */
 	protected abstract void createOriginalEntities();
+
+	/**
+	 * Create the camera for this game
+	 * @return A camera, probably an OrthographicCamera
+	 */
+	protected abstract Camera createCamera();
 }

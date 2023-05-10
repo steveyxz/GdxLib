@@ -2,9 +2,11 @@ package me.partlysunny.gdxlib.ecs.component;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.ComponentMapper;
+import com.badlogic.ashley.core.Entity;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class Mappers {
 
@@ -23,6 +25,10 @@ public class Mappers {
     @SuppressWarnings("unchecked")
     public static <T extends Component> ComponentMapper<T> getComponentMapper(T component) {
         return (ComponentMapper<T>) getComponentMapper(component.getClass());
+    }
+
+    public static <T extends Component> T get(Class<T> clazz, Entity entity) {
+        return getComponentMapper(clazz).get(entity);
     }
 
 }

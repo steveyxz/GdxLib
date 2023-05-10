@@ -1,13 +1,18 @@
 package me.partlysunny.gdxlib;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.math.Vector2;
+import me.partlysunny.gdxlib.control.action.ActionMap;
+import me.partlysunny.gdxlib.control.action.ActionSet;
+import me.partlysunny.gdxlib.control.action.KeyAction;
 import me.partlysunny.gdxlib.ecs.entity.EntityProvider;
 import me.partlysunny.gdxlib.ecs.entity.SimpleEntityProvider;
 import me.partlysunny.gdxlib.entities.PlayerEntity;
 import me.partlysunny.gdxlib.entities.SquareEntity;
+import me.partlysunny.gdxlib.util.Pair;
 import me.partlysunny.gdxlib.util.camera.CameraHandler;
 import me.partlysunny.gdxlib.util.camera.OrthoCameraHandler;
 import me.partlysunny.gdxlib.util.resource.ResourceManager;
@@ -22,6 +27,12 @@ public class MainGame extends GdxGame {
     @Override
     protected void loadResources() {
         ResourceManager.getInstance().add("logo", new TextureResource("badlogic.jpg"));
+        controlHub.getActionMap().addActions(ActionMap.of(
+                Pair.of("up", ActionSet.of(new KeyAction(Input.Keys.W))),
+                Pair.of("left", ActionSet.of(new KeyAction(Input.Keys.A))),
+                Pair.of("down", ActionSet.of(new KeyAction(Input.Keys.S))),
+                Pair.of("right", ActionSet.of(new KeyAction(Input.Keys.D)))
+        ));
     }
 
     @Override

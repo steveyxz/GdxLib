@@ -5,7 +5,9 @@ import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Disposable;
+import me.partlysunny.gdxlib.GdxGame;
 import me.partlysunny.gdxlib.ecs.component.Mappers;
+import me.partlysunny.gdxlib.ecs.component.control.ControllerComponent;
 import me.partlysunny.gdxlib.ecs.component.physics.Box2DPhysicsComponent;
 import me.partlysunny.gdxlib.ecs.systems.SystemManager;
 import me.partlysunny.gdxlib.ecs.systems.render.BatchSet;
@@ -49,9 +51,13 @@ public class GameWorld implements Disposable {
     }
 
     public void destroy(Entity entity) {
-        Box2DPhysicsComponent physics = Mappers.getComponentMapper(Box2DPhysicsComponent.class).get(entity);
+        Box2DPhysicsComponent physics = Mappers.get(Box2DPhysicsComponent.class, entity);
         if (physics != null) {
             physicsWorld.destroyBody(physics.getLinkedBody());
+        }
+        ControllerComponent controller = Mappers.get(ControllerComponent.class, entity);
+        if (controller != null) {
+            GdxGame.getInstance().getControlHub().getControllerHandler().removeController(controller.getController());
         }
         entityWorld.removeEntity(entity);
     }

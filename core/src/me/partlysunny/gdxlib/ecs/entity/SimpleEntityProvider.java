@@ -27,6 +27,7 @@ public abstract class SimpleEntityProvider implements EntityProvider {
         Entity entity = world.getEntityWorld().createEntity();
         addPosition(entity, originPosition);
         addRenderer(entity);
+        addExtraComponents(entity);
         if (autoAdd()) {
             world.getEntityWorld().addEntity(entity);
         }

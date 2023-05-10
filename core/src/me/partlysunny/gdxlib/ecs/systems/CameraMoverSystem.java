@@ -19,7 +19,7 @@ public class CameraMoverSystem extends IteratingSystem {
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-        TransformComponent transformComponent = Mappers.getComponentMapper(TransformComponent.class).get(entity);
+        TransformComponent transformComponent = Mappers.get(TransformComponent.class, entity);
         camera.position.set(transformComponent.getPosition().x, transformComponent.getPosition().y, 0);
     }
 }

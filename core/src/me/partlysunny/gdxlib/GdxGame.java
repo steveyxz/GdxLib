@@ -4,21 +4,19 @@ import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.ScreenUtils;
+import me.partlysunny.gdxlib.control.action.ActionDispatcher;
 import me.partlysunny.gdxlib.ecs.GameWorld;
-import me.partlysunny.gdxlib.ecs.systems.DestroyerSystem;
+import me.partlysunny.gdxlib.control.ControlHub;
 import me.partlysunny.gdxlib.ecs.systems.LateDestroyer;
 import me.partlysunny.gdxlib.ecs.systems.render.BatchSet;
 import me.partlysunny.gdxlib.util.Debug;
 import me.partlysunny.gdxlib.util.camera.CameraHandler;
 import me.partlysunny.gdxlib.util.resource.ResourceManager;
-import me.partlysunny.gdxlib.util.resource.TextureResource;
 
 public abstract class GdxGame extends ApplicationAdapter {
 
@@ -35,6 +33,7 @@ public abstract class GdxGame extends ApplicationAdapter {
 	protected BatchSet batchSet;
 	protected Camera camera = null;
 	protected CameraHandler cameraHandler = null;
+	protected final ControlHub controlHub = new ControlHub();
 
 	@Override
 	public void create() {
@@ -67,6 +66,8 @@ public abstract class GdxGame extends ApplicationAdapter {
 		batchSet.begin();
 		gameWorld.update(delta);
 		batchSet.end();
+		//Dispatch any actions for this frame
+		controlHub.getActionDispatcher().update();
 		//Destroy entities that were marked for destruction
 		LateDestroyer.update();
 		camera.update();
@@ -98,6 +99,10 @@ public abstract class GdxGame extends ApplicationAdapter {
 
 	public Camera getCamera() {
 		return camera;
+	}
+
+	public ControlHub getControlHub() {
+		return controlHub;
 	}
 
 	protected abstract Vector2 getPhysicsGravity();

@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import me.partlysunny.gdxlib.ecs.GameWorld;
+import me.partlysunny.gdxlib.ecs.component.control.ControllerComponent;
 import me.partlysunny.gdxlib.ecs.component.render.providers.RendererProvider;
 import me.partlysunny.gdxlib.ecs.component.render.providers.ShapeTextureComponentProvider;
 import me.partlysunny.gdxlib.ecs.component.standard.CameraFollowComponent;
@@ -23,5 +24,8 @@ public class PlayerEntity extends SimpleEntityProvider {
     @Override
     protected void addExtraComponents(Entity e) {
         e.add(world.getEntityWorld().createComponent(CameraFollowComponent.class));
+        ControllerComponent component = world.getEntityWorld().createComponent(ControllerComponent.class);
+        component.setController(new MovementController(e));
+        e.add(component);
     }
 }

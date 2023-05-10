@@ -22,6 +22,15 @@ import me.partlysunny.gdxlib.util.resource.TextureResource;
 
 public abstract class GdxGame extends ApplicationAdapter {
 
+	private static GdxGame instance;
+
+	public static GdxGame getInstance() {
+		if (instance == null) {
+			throw new IllegalStateException("GdxGame instance is null!");
+		}
+		return instance;
+	}
+
 	protected GameWorld gameWorld;
 	protected BatchSet batchSet;
 	protected Camera camera = null;
@@ -29,6 +38,7 @@ public abstract class GdxGame extends ApplicationAdapter {
 
 	@Override
 	public void create() {
+		instance = this;
 		Debug.logDebug("Loading resources...");
 		loadResources();
 		Debug.logDebug("Initializing sprite batches...");
@@ -78,6 +88,18 @@ public abstract class GdxGame extends ApplicationAdapter {
 		ResourceManager.getInstance().dispose();
 	}
 
+	public GameWorld getGameWorld() {
+		return gameWorld;
+	}
+
+	public BatchSet getBatchSet() {
+		return batchSet;
+	}
+
+	public Camera getCamera() {
+		return camera;
+	}
+
 	protected abstract Vector2 getPhysicsGravity();
 
 	/**
@@ -98,5 +120,9 @@ public abstract class GdxGame extends ApplicationAdapter {
 	 */
 	protected abstract void createOriginalEntities();
 
+	/**
+	 * Create the camera handler here
+	 * @return The camera handler, which will be used to create the camera, handles etc.
+	 */
 	protected abstract CameraHandler createCameraHandler();
 }

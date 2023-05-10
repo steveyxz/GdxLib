@@ -8,6 +8,14 @@ import me.partlysunny.gdxlib.ecs.component.standard.TransformComponent;
 
 public abstract class SimpleEntityProvider implements EntityProvider {
 
+    public static Entity createSingular(Class<? extends SimpleEntityProvider> clazz, GameWorld world, Vector2 originPosition) {
+        try {
+            return clazz.getConstructor(GameWorld.class).newInstance(world).createEntity(originPosition);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     protected final GameWorld world;
 
     public SimpleEntityProvider(GameWorld world) {
@@ -19,6 +27,9 @@ public abstract class SimpleEntityProvider implements EntityProvider {
         Entity entity = world.getEntityWorld().createEntity();
         addPosition(entity, originPosition);
         addRenderer(entity);
+        if (autoAdd()) {
+            world.getEntityWorld().addEntity(entity);
+        }
         return entity;
     }
 
@@ -26,6 +37,10 @@ public abstract class SimpleEntityProvider implements EntityProvider {
         TransformComponent component = world.getEntityWorld().createComponent(TransformComponent.class);
         component.setPosition(position);
         e.add(component);
+    }
+
+    protected boolean autoAdd() {
+        return true;
     }
 
     protected void addRenderer(Entity e) {

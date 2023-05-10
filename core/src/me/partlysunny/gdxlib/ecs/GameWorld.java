@@ -2,6 +2,7 @@ package me.partlysunny.gdxlib.ecs;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Disposable;
 import me.partlysunny.gdxlib.ecs.component.Mappers;

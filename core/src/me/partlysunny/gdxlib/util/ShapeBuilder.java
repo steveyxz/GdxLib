@@ -88,7 +88,8 @@ public class ShapeBuilder {
         Vector2[] vertices = new Vector2[sides];
         for (int i = 0; i < sides; i++) {
             float currentAngle = angle * i;
-            Vector2 newPosition = new Vector2((float) Math.cos(currentAngle), (float) Math.sin(currentAngle));
+            double angleInRadians = FastTrig.toRadians(currentAngle);
+            Vector2 newPosition = new Vector2((float) FastTrig.cos(angleInRadians), (float) FastTrig.sin(angleInRadians));
             newPosition.scl(radius);
             newPosition.add(pos);
             vertices[i] = newPosition;

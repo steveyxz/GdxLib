@@ -15,8 +15,8 @@ public class PhysicsSystem extends IteratingSystem {
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-        CustomPhysicsComponent physicsComponent = Mappers.getComponentMapper(CustomPhysicsComponent.class).get(entity);
-        TransformComponent transformComponent = Mappers.getComponentMapper(TransformComponent.class).get(entity);
+        CustomPhysicsComponent physicsComponent = Mappers.get(CustomPhysicsComponent.class, entity);
+        TransformComponent transformComponent = Mappers.get(TransformComponent.class, entity);
         transformComponent.setPosition(transformComponent.getPosition().add(physicsComponent.getLinearVelocity().scl(deltaTime)));
         transformComponent.setRotation(transformComponent.getRotation() + physicsComponent.getAngularVelocity() * deltaTime);
     }

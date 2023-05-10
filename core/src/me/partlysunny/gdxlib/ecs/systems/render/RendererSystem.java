@@ -22,7 +22,7 @@ public abstract class RendererSystem<T extends Component> extends IteratingSyste
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-        render(entity, Mappers.getComponentMapper(TransformComponent.class).get(entity).getPosition(), Mappers.getComponentMapper(targetedComponent).get(entity), deltaTime);
+        render(entity, Mappers.get(TransformComponent.class, entity).getPosition(), Mappers.get(targetedComponent, entity), deltaTime);
     }
 
     protected abstract void render(Entity entity, Vector2 position, T renderComponent, float deltaTime);

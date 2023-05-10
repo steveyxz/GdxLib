@@ -14,8 +14,8 @@ public class PositionSyncerSystem extends IteratingSystem {
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-        TransformComponent transformComponent = Mappers.getComponentMapper(TransformComponent.class).get(entity);
-        Box2DPhysicsComponent physicsComponent = Mappers.getComponentMapper(Box2DPhysicsComponent.class).get(entity);
+        TransformComponent transformComponent = Mappers.get(TransformComponent.class, entity);
+        Box2DPhysicsComponent physicsComponent = Mappers.get(Box2DPhysicsComponent.class, entity);
 
         transformComponent.setPosition(physicsComponent.getLinkedBody().getPosition());
         transformComponent.setRotation(physicsComponent.getLinkedBody().getAngle());

@@ -1,30 +1,29 @@
 package me.partlysunny.gdxlib.util;
 
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.Shape;
-import me.partlysunny.gdxlib.ecs.GameWorld;
+import me.partlysunny.gdxlib.GdxGame;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BodyBuilder {
 
-    private static GameWorld WORLD;
+    private BodyBuilder() {}
 
-    public static void init(GameWorld world) {
-        WORLD = world;
+    private BodyBuilder(Vector2 originPosition) {
+        bodyDef.position.set(originPosition);
     }
 
-    private BodyBuilder() {
+    public static BodyBuilder create(Vector2 originPosition) {
+        return new BodyBuilder(originPosition).bodyType(BodyDef.BodyType.DynamicBody);
     }
 
-    public static BodyBuilder create() {
-        if (WORLD == null) {
-            throw new IllegalStateException("BodyBuilder has not been initialized with a world!");
-        }
-        return new BodyBuilder();
+    public static BodyBuilder createWithPixelPosition(Vector2 originPosition) {
+        return create(Physics.toMeters(originPosition));
     }
 
     private final BodyDef bodyDef = new BodyDef();
@@ -85,6 +84,11 @@ public class BodyBuilder {
         return this;
     }
 
+    public BodyBuilder bodyType(BodyDef.BodyType bodyType) {
+        bodyDef.type = bodyType;
+        return this;
+    }
+
     public BodyBuilder addShape(Shape shape) {
         FixtureDef def = new FixtureDef();
         def.shape = shape;
@@ -98,7 +102,6 @@ public class BodyBuilder {
     }
 
     public Body build() {
-        return WORLD.createBody(bodyDef, fixtures.toArray(new FixtureDef[0]));
+        return GdxGame.getInstance().getGameWorld().createBody(bodyDef, fixtures.toArray(new FixtureDef[0]));
     }
-
 }

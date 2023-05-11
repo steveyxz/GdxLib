@@ -6,9 +6,11 @@ import com.badlogic.gdx.physics.box2d.Body;
 public class Box2DPhysicsComponent implements PhysicsComponent {
 
     private Body linkedBody;
+    private float decelerationRate;
 
-    public Box2DPhysicsComponent(Body linkedBody) {
+    public Box2DPhysicsComponent(Body linkedBody, float decelerationRate) {
         this.linkedBody = linkedBody;
+        this.decelerationRate = decelerationRate;
     }
 
     public Box2DPhysicsComponent() {
@@ -38,4 +40,21 @@ public class Box2DPhysicsComponent implements PhysicsComponent {
         linkedBody.setAngularVelocity(velocity);
     }
 
+    @Override
+    public Vector2 getPosition() {
+        return linkedBody.getPosition();
+    }
+
+    @Override
+    public float getRotation() {
+        return linkedBody.getAngle();
+    }
+
+    public float getDecelerationRate() {
+        return decelerationRate;
+    }
+
+    public void setDecelerationRate(float decelerationRate) {
+        this.decelerationRate = decelerationRate;
+    }
 }

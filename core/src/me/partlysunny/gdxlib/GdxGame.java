@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.ScreenUtils;
 import me.partlysunny.gdxlib.control.action.ActionDispatcher;
@@ -66,6 +67,7 @@ public abstract class GdxGame extends ApplicationAdapter {
 		batchSet.begin();
 		gameWorld.update(delta);
 		batchSet.end();
+		Debug.renderBox2DDebug();
 		//Dispatch any actions for this frame
 		controlHub.getActionDispatcher().update();
 		//Destroy entities that were marked for destruction

@@ -5,6 +5,10 @@ import com.badlogic.gdx.math.Vector2;
 
 public interface PhysicsComponent extends Component {
 
+    /**
+     * Gets the linear velocity of the entity
+     * @return The linear velocity in m/s
+     */
     Vector2 getLinearVelocity();
 
     void setLinearVelocity(Vector2 velocity);
@@ -12,5 +16,9 @@ public interface PhysicsComponent extends Component {
     float getAngularVelocity();
 
     void setAngularVelocity(float velocity);
+
+    Vector2 getPosition();
+
+    float getRotation();
 
 }

@@ -16,6 +16,7 @@ public class GameWorld implements Disposable {
 
     private final World physicsWorld;
     private final PooledEngine entityWorld;
+    private static final float STEP_TIME = 1f / 30f;
 
     public GameWorld(World physicsWorld, PooledEngine entityWorld, BatchSet batchSet) {
         this.physicsWorld = physicsWorld;
@@ -32,7 +33,7 @@ public class GameWorld implements Disposable {
     }
 
     public void update(float delta) {
-        physicsWorld.step(delta, 6, 2);
+        physicsWorld.step(STEP_TIME, 6, 2);
         entityWorld.update(delta);
     }
 

@@ -3,8 +3,10 @@ package me.partlysunny.gdxlib.ecs.entity;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.math.Vector2;
 import me.partlysunny.gdxlib.ecs.GameWorld;
+import me.partlysunny.gdxlib.ecs.component.physics.providers.PhysicsProvider;
 import me.partlysunny.gdxlib.ecs.component.render.providers.RendererProvider;
 import me.partlysunny.gdxlib.ecs.component.standard.TransformComponent;
+import org.jetbrains.annotations.Nullable;
 
 public abstract class SimpleEntityProvider implements EntityProvider {
 
@@ -27,6 +29,7 @@ public abstract class SimpleEntityProvider implements EntityProvider {
         Entity entity = world.getEntityWorld().createEntity();
         addPosition(entity, originPosition);
         addRenderer(entity);
+        addPhysics(entity, originPosition);
         addExtraComponents(entity);
         if (autoAdd()) {
             world.getEntityWorld().addEntity(entity);
@@ -48,6 +51,15 @@ public abstract class SimpleEntityProvider implements EntityProvider {
         e.add(getRendererProvider().createRenderer(world));
     }
 
+    protected void addPhysics(Entity e, Vector2 originPosition) {
+        PhysicsProvider physicsProvider = getPhysicsProvider(originPosition);
+        if (physicsProvider != null) {
+            e.add(physicsProvider.createPhysics(world));
+        }
+    }
+
     protected abstract RendererProvider getRendererProvider();
+    @Nullable
+    protected abstract PhysicsProvider getPhysicsProvider(Vector2 originPosition);
     protected abstract void addExtraComponents(Entity e);
 }

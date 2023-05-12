@@ -8,8 +8,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.EarClippingTriangulator;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import me.partlysunny.gdxlib.ecs.GameWorld;
-import me.partlysunny.gdxlib.ecs.component.render.RendererComponent;
 import me.partlysunny.gdxlib.ecs.component.render.PolygonalTextureComponent;
+import me.partlysunny.gdxlib.ecs.component.render.RendererComponent;
 import me.partlysunny.gdxlib.util.PolygonHelper;
 import me.partlysunny.gdxlib.util.resource.ResourceManager;
 

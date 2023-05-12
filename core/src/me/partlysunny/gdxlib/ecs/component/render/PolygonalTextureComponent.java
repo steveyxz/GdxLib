@@ -17,12 +17,12 @@ public class PolygonalTextureComponent implements RendererComponent {
         return polygonSprite;
     }
 
+    public void setPolygonSprite(PolygonSprite polygonSprite) {
+        this.polygonSprite = polygonSprite;
+    }
+
     @Override
     public void reset() {
         polygonSprite = null;
-    }
-
-    public void setPolygonSprite(PolygonSprite polygonSprite) {
-        this.polygonSprite = polygonSprite;
     }
 }

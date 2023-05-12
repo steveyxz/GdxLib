@@ -3,7 +3,6 @@ package me.partlysunny.gdxlib.ecs.component.standard;
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.utils.Pool;
 
-import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class CameraFollowComponent implements Component, Pool.Poolable {

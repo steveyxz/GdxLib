@@ -3,11 +3,9 @@ package me.partlysunny.gdxlib.ecs.systems.physics;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import com.badlogic.gdx.math.Vector2;
 import me.partlysunny.gdxlib.ecs.component.Mappers;
 import me.partlysunny.gdxlib.ecs.component.physics.Box2DPhysicsComponent;
 import me.partlysunny.gdxlib.ecs.component.standard.TransformComponent;
-import me.partlysunny.gdxlib.util.Debug;
 import me.partlysunny.gdxlib.util.Physics;
 
 public class PositionSyncerSystem extends IteratingSystem {

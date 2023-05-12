@@ -10,7 +10,6 @@ import com.badlogic.gdx.math.Vector3;
 import me.partlysunny.gdxlib.ecs.component.Mappers;
 import me.partlysunny.gdxlib.ecs.component.standard.CameraFollowComponent;
 import me.partlysunny.gdxlib.ecs.component.standard.TransformComponent;
-import me.partlysunny.gdxlib.util.Debug;
 
 public class CameraMoverSystem extends IteratingSystem {
 

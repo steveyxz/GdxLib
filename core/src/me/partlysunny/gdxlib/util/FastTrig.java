@@ -7,8 +7,10 @@ package me.partlysunny.gdxlib.util;
  * @author Various (see javadoc of individual methods for attributions)
  * @since 1.0
  */
-public class FastTrig
-{
+public class FastTrig {
+    private FastTrig() {
+    }
+
     /**
      * Fast Trig functions for x86.
      * This forces the trig function to stay within the safe area on the x86
@@ -20,22 +22,16 @@ public class FastTrig
      * Originally written by JeffK, and taken from the <a href="http://slick.ninjacave.com/">Slick2D</a> game library.
      *
      * @param radians The original angle
-     *
      * @return The reduced Sin angle
-     *
      * @author JeffK (taken from the <a href="http://slick.ninjacave.com/">Slick2D</a> game library)
-     *
      * @since 1.0
      */
-    private static double reduceSinAngle(double radians)
-    {
+    private static double reduceSinAngle(double radians) {
         radians %= Math.PI * 2.0; // put us in -2PI to +2PI space
-        if (Math.abs(radians) > Math.PI)
-        { // put us in -PI to +PI space
+        if (Math.abs(radians) > Math.PI) { // put us in -PI to +PI space
             radians -= (Math.PI * 2.0);
         }
-        if (Math.abs(radians) > Math.PI / 2.0)
-        {// put us in -PI/2 to +PI/2 space
+        if (Math.abs(radians) > Math.PI / 2.0) {// put us in -PI/2 to +PI/2 space
             radians = Math.PI - radians;
         }
 
@@ -48,21 +44,15 @@ public class FastTrig
      * Originally written by JeffK, and taken from the <a href="http://slick.ninjacave.com/">Slick2D</a> game library.
      *
      * @param radians The angle, in radians.
-     *
      * @return The sine of {@code radians}.
-     *
      * @author JeffK (taken from the <a href="http://slick.ninjacave.com/">Slick2D</a> game library)
      * @since 1.0
      */
-    public static double sin(double radians)
-    {
+    public static double sin(double radians) {
         radians = reduceSinAngle(radians); // limits angle to between -PI/2 and +PI/2
-        if (Math.abs(radians) <= Math.PI / 4.0)
-        {
+        if (Math.abs(radians) <= Math.PI / 4.0) {
             return Math.sin(radians);
-        }
-        else
-        {
+        } else {
             return Math.cos(Math.PI / 2.0 - radians);
         }
     }
@@ -73,14 +63,11 @@ public class FastTrig
      * Originally written by JeffK, and taken from the <a href="http://slick.ninjacave.com/">Slick2D</a> game library.
      *
      * @param radians The angle, in radians.
-     *
      * @return The cosine of {@code radians}.
-     *
      * @author JeffK (taken from the <a href="http://slick.ninjacave.com/">Slick2D</a> game library)
      * @since 1.0
      */
-    public static double cos(double radians)
-    {
+    public static double cos(double radians) {
         return sin(radians + Math.PI / 2.0);
     }
 
@@ -91,14 +78,11 @@ public class FastTrig
      * page</a>.
      *
      * @param z The value to calculate the arc tangent of.
-     *
      * @return The arc tangent of {@code z}, in radians.
-     *
      * @author Nic Taylor (taken from <a href="https://www.dsprelated.com/showarticle/1052.php">this page</a>
      * @since 2.3
      */
-    public static double atan(double z)
-    {
+    public static double atan(double z) {
         return (0.97239411 + -0.19194795 * z * z) * z;
     }
 
@@ -111,16 +95,13 @@ public class FastTrig
      *
      * @param y The ordinate coordinate.
      * @param x The abscissa coordinate.
-     *
      * @return The theta component of the point (r, theta) in polar coordinates that corresponds to the point (x, y) in
-     *         Cartesian coordinates.
-     *
+     * Cartesian coordinates.
      * @author Nic Taylor and imuli (taken from <a href="https://www.dsprelated.com/showarticle/1052.php">this
-     *         page</a>
+     * page</a>
      * @since 2.3
      */
-    public static double atan2(double y, double x)
-    {
+    public static double atan2(double y, double x) {
         final double ay = Math.abs(y), ax = Math.abs(x);
         final boolean invert = ay > ax;
         final double z = invert ? ax / ay : ay / ax;    // [0,1]
@@ -130,17 +111,11 @@ public class FastTrig
         return Math.copySign(th, y);                    // [-π,π]
     }
 
-    public static double toDegrees(double radians)
-    {
+    public static double toDegrees(double radians) {
         return radians * 180.0 / Math.PI;
     }
 
-    public static double toRadians(double degrees)
-    {
+    public static double toRadians(double degrees) {
         return degrees * Math.PI / 180.0;
-    }
-
-    private FastTrig()
-    {
     }
 }

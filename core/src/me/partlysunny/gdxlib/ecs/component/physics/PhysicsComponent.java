@@ -7,6 +7,7 @@ public interface PhysicsComponent extends Component {
 
     /**
      * Gets the linear velocity of the entity
+     *
      * @return The linear velocity in m/s
      */
     Vector2 getLinearVelocity();
@@ -19,6 +20,11 @@ public interface PhysicsComponent extends Component {
 
     Vector2 getPosition();
 
+    /**
+     * Rotation in degrees
+     *
+     * @return The rotation in degrees, not radians
+     */
     float getRotation();
 
 }

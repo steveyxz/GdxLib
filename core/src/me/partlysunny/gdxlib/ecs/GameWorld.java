@@ -2,8 +2,10 @@ package me.partlysunny.gdxlib.ecs;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
-import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Disposable;
 import me.partlysunny.gdxlib.GdxGame;
 import me.partlysunny.gdxlib.ecs.component.Mappers;
@@ -14,9 +16,9 @@ import me.partlysunny.gdxlib.ecs.systems.render.BatchSet;
 
 public class GameWorld implements Disposable {
 
+    private static final float STEP_TIME = 1f / 30f;
     private final World physicsWorld;
     private final PooledEngine entityWorld;
-    private static final float STEP_TIME = 1f / 30f;
 
     public GameWorld(World physicsWorld, PooledEngine entityWorld, BatchSet batchSet) {
         this.physicsWorld = physicsWorld;

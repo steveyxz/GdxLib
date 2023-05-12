@@ -2,6 +2,7 @@ package me.partlysunny.gdxlib.ecs.component.physics;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import me.partlysunny.gdxlib.util.FastTrig;
 
 public class Box2DPhysicsComponent implements PhysicsComponent {
 
@@ -47,7 +48,7 @@ public class Box2DPhysicsComponent implements PhysicsComponent {
 
     @Override
     public float getRotation() {
-        return linkedBody.getAngle();
+        return (float) FastTrig.toDegrees(linkedBody.getAngle());
     }
 
     public float getDecelerationRate() {

@@ -8,13 +8,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class LateDestroyer {
 
+    private static final Queue<Body> bodiesToDestroy = new LinkedBlockingQueue<>();
     private static GameWorld world;
 
     public static void init(GameWorld world) {
         LateDestroyer.world = world;
     }
-
-    private static final Queue<Body> bodiesToDestroy = new LinkedBlockingQueue<>();
 
     public static void destroy(Body body) {
         bodiesToDestroy.add(body);

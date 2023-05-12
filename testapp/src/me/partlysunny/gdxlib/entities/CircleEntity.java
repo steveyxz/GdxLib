@@ -7,26 +7,27 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import me.partlysunny.gdxlib.ecs.GameWorld;
 import me.partlysunny.gdxlib.ecs.component.physics.providers.Box2DPhysicsProvider;
 import me.partlysunny.gdxlib.ecs.component.physics.providers.PhysicsProvider;
+import me.partlysunny.gdxlib.ecs.component.render.providers.RegionalTextureComponentProvider;
 import me.partlysunny.gdxlib.ecs.component.render.providers.RendererProvider;
-import me.partlysunny.gdxlib.ecs.component.render.providers.ShapeTextureComponentProvider;
 import me.partlysunny.gdxlib.ecs.entity.SimpleEntityProvider;
 import me.partlysunny.gdxlib.util.BodyBuilder;
 import me.partlysunny.gdxlib.util.Physics;
 import me.partlysunny.gdxlib.util.ShapeBuilder;
+import me.partlysunny.gdxlib.util.ShapeTextureGenerator;
 
-public class SquareEntity extends SimpleEntityProvider {
-    public SquareEntity(GameWorld world) {
+public class CircleEntity extends SimpleEntityProvider {
+    public CircleEntity(GameWorld world) {
         super(world);
     }
 
     @Override
     protected RendererProvider getRendererProvider() {
-        return new ShapeTextureComponentProvider(Color.BROWN, ShapeBuilder.nSidedPolygon(Vector2.Zero, 7, 10));
+        return new RegionalTextureComponentProvider(ShapeTextureGenerator.getCircle(10, Color.RED.toIntBits()));
     }
 
     @Override
     protected PhysicsProvider getPhysicsProvider(Vector2 originPosition) {
-        return new Box2DPhysicsProvider(BodyBuilder.createWithPixelPosition(originPosition).bodyType(BodyDef.BodyType.DynamicBody).addShape(ShapeBuilder.nSidedPolygon(Vector2.Zero, 7, Physics.toMeters(10))).build(), 1);
+        return new Box2DPhysicsProvider(BodyBuilder.createWithPixelPosition(originPosition).bodyType(BodyDef.BodyType.DynamicBody).addShape(ShapeBuilder.circle(Vector2.Zero, Physics.toMeters(10))).build(), 0.95f);
     }
 
     @Override

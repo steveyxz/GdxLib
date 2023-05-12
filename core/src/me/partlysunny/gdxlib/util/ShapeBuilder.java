@@ -8,7 +8,8 @@ public class ShapeBuilder {
 
     /**
      * Creates a circle shape
-     * @param pos The position of the circle
+     *
+     * @param pos    The position of the circle
      * @param radius The radius of the circle
      * @return The circle shape
      */
@@ -21,8 +22,9 @@ public class ShapeBuilder {
 
     /**
      * Creates a radial rectangle polygon
-     * @param center The center coordinate of the rectangle
-     * @param halfDim The half dimensions (half the width and half the height) of the rectangle
+     *
+     * @param center   The center coordinate of the rectangle
+     * @param halfDim  The half dimensions (half the width and half the height) of the rectangle
      * @param rotation The rotation of the rectangle
      * @return The radial rectangle shape as a PolygonShape
      */
@@ -34,7 +36,8 @@ public class ShapeBuilder {
 
     /**
      * Creates a radial rectangle with rotation 0
-     * @param center The center coordinate of the rectangle
+     *
+     * @param center  The center coordinate of the rectangle
      * @param halfDim The half dimensions of the rectangle
      * @return The radial rectangle shape with rotation 0.
      */
@@ -44,7 +47,8 @@ public class ShapeBuilder {
 
     /**
      * Create a rectangle with a top left corner coordinate
-     * @param pos The top left corner position of the rectangle
+     *
+     * @param pos  The top left corner position of the rectangle
      * @param dims The dimensions of the rectangle
      * @return The resulting rectangle shape
      */
@@ -57,7 +61,8 @@ public class ShapeBuilder {
 
     /**
      * Creates a square shape
-     * @param pos The top left corner position of the square
+     *
+     * @param pos  The top left corner position of the square
      * @param side The side length of the square
      * @return The resulting square shape.
      */
@@ -67,7 +72,8 @@ public class ShapeBuilder {
 
     /**
      * Creates a square with a radius
-     * @param pos The center position of the square
+     *
+     * @param pos    The center position of the square
      * @param radius The radius of the square
      * @return The resulting square shape.
      */
@@ -77,8 +83,9 @@ public class ShapeBuilder {
 
     /**
      * Creates a regular polygon shape with n sides.
-     * @param pos The center position of the polygon
-     * @param sides The number of sides of the polygon
+     *
+     * @param pos    The center position of the polygon
+     * @param sides  The number of sides of the polygon
      * @param radius The radius of the polygon (the distance from the center to each point)
      * @return The resulting polygon
      */

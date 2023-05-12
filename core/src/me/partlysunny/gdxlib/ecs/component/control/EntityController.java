@@ -3,7 +3,6 @@ package me.partlysunny.gdxlib.ecs.component.control;
 import com.badlogic.ashley.core.Entity;
 import me.partlysunny.gdxlib.GdxGame;
 import me.partlysunny.gdxlib.control.controller.Controller;
-import me.partlysunny.gdxlib.util.Debug;
 
 /**
  * Class to connect ashley ECS with the controller system

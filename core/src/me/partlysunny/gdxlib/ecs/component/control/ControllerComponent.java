@@ -1,7 +1,6 @@
 package me.partlysunny.gdxlib.ecs.component.control;
 
 import com.badlogic.ashley.core.Component;
-import me.partlysunny.gdxlib.control.controller.Controller;
 
 public class ControllerComponent implements Component {
 

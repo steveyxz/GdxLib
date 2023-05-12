@@ -10,6 +10,7 @@ import java.util.Map;
 public class ResourceManager {
 
     private static ResourceManager instance;
+    private final Map<String, Resource<?>> resources = new HashMap<>();
 
     private ResourceManager() {
     }
@@ -20,8 +21,6 @@ public class ResourceManager {
         }
         return instance;
     }
-
-    private final Map<String, Resource<?>> resources = new HashMap<>();
 
     public <T> T get(String name, Class<T> type) {
         Resource<?> resource = resources.get(name);

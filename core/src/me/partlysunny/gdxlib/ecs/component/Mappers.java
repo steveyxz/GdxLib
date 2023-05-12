@@ -6,7 +6,6 @@ import com.badlogic.ashley.core.Entity;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 public class Mappers {
 

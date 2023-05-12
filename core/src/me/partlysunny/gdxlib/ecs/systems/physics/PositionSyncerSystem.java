@@ -21,7 +21,7 @@ public class PositionSyncerSystem extends IteratingSystem {
     }
 
     private void syncBox2D(TransformComponent transformComponent, Box2DPhysicsComponent physicsComponent) {
-        transformComponent.setPosition(Physics.toPixels(physicsComponent.getLinkedBody().getPosition()));
-        transformComponent.setRotation(physicsComponent.getLinkedBody().getAngle());
+        transformComponent.setPosition(Physics.toPixels(physicsComponent.getPosition()));
+        transformComponent.setRotation(physicsComponent.getRotation());
     }
 }

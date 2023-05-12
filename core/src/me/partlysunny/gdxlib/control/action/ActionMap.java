@@ -2,9 +2,13 @@ package me.partlysunny.gdxlib.control.action;
 
 import me.partlysunny.gdxlib.util.Pair;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class ActionMap implements Iterable<String> {
+
+    private final Map<String, ActionSet> actionMap = new HashMap<>();
 
     @SafeVarargs
     public static ActionMap of(Pair<String, ActionSet>... actions) {
@@ -14,8 +18,6 @@ public class ActionMap implements Iterable<String> {
         }
         return actionMap;
     }
-
-    private final Map<String, ActionSet> actionMap = new HashMap<>();
 
     public void addActions(String actionName, Action... actionCodes) {
         if (!hasAction(actionName)) {

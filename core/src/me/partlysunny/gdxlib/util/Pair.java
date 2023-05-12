@@ -10,16 +10,16 @@ public class Pair<T, U> {
         this.second = second;
     }
 
+    public static <T, U> Pair<T, U> of(T first, U second) {
+        return new Pair<>(first, second);
+    }
+
     public T getFirst() {
         return first;
     }
 
     public U getSecond() {
         return second;
-    }
-
-    public static <T, U> Pair<T, U> of (T first, U second) {
-        return new Pair<>(first, second);
     }
 
 }

@@ -1,7 +1,6 @@
 package me.partlysunny.gdxlib.control.action;
 
 import me.partlysunny.gdxlib.control.controller.ControllerHandler;
-import me.partlysunny.gdxlib.util.Debug;
 
 public class ActionDispatcher {
 

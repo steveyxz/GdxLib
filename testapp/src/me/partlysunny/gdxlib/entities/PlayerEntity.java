@@ -7,13 +7,14 @@ import me.partlysunny.gdxlib.ecs.GameWorld;
 import me.partlysunny.gdxlib.ecs.component.control.ControllerComponent;
 import me.partlysunny.gdxlib.ecs.component.physics.providers.Box2DPhysicsProvider;
 import me.partlysunny.gdxlib.ecs.component.physics.providers.PhysicsProvider;
+import me.partlysunny.gdxlib.ecs.component.render.providers.RegionalTextureComponentProvider;
 import me.partlysunny.gdxlib.ecs.component.render.providers.RendererProvider;
-import me.partlysunny.gdxlib.ecs.component.render.providers.ShapeTextureComponentProvider;
 import me.partlysunny.gdxlib.ecs.component.standard.CameraFollowComponent;
 import me.partlysunny.gdxlib.ecs.entity.SimpleEntityProvider;
 import me.partlysunny.gdxlib.util.BodyBuilder;
 import me.partlysunny.gdxlib.util.Physics;
 import me.partlysunny.gdxlib.util.ShapeBuilder;
+import me.partlysunny.gdxlib.util.ShapeTextureGenerator;
 
 public class PlayerEntity extends SimpleEntityProvider {
     public PlayerEntity(GameWorld world) {
@@ -22,12 +23,12 @@ public class PlayerEntity extends SimpleEntityProvider {
 
     @Override
     protected RendererProvider getRendererProvider() {
-        return new ShapeTextureComponentProvider(Color.BLUE, ShapeBuilder.radialSquare(new Vector2(0, 0), 50));
+        return new RegionalTextureComponentProvider(ShapeTextureGenerator.getCircle(50, Color.WHITE.toIntBits()));
     }
 
     @Override
     protected PhysicsProvider getPhysicsProvider(Vector2 originPosition) {
-        return new Box2DPhysicsProvider(BodyBuilder.createWithPixelPosition(originPosition).addShape(ShapeBuilder.radialSquare(Vector2.Zero, Physics.toMeters(50))).build(), 0.9f);
+        return new Box2DPhysicsProvider(BodyBuilder.createWithPixelPosition(originPosition).addShape(ShapeBuilder.circle(Vector2.Zero, Physics.toMeters(50))).build(), 0.9f);
     }
 
     @Override

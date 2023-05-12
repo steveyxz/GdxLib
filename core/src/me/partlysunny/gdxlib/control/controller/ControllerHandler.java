@@ -1,7 +1,6 @@
 package me.partlysunny.gdxlib.control.controller;
 
 import me.partlysunny.gdxlib.ecs.component.control.EntityController;
-import me.partlysunny.gdxlib.util.Debug;
 
 import java.util.ArrayList;
 import java.util.HashMap;

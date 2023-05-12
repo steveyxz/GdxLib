@@ -10,18 +10,18 @@ import org.jetbrains.annotations.Nullable;
 
 public abstract class SimpleEntityProvider implements EntityProvider {
 
+    protected final GameWorld world;
+
+    public SimpleEntityProvider(GameWorld world) {
+        this.world = world;
+    }
+
     public static Entity createSingular(Class<? extends SimpleEntityProvider> clazz, GameWorld world, Vector2 originPosition) {
         try {
             return clazz.getConstructor(GameWorld.class).newInstance(world).createEntity(originPosition);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    protected final GameWorld world;
-
-    public SimpleEntityProvider(GameWorld world) {
-        this.world = world;
     }
 
     @Override
@@ -59,7 +59,9 @@ public abstract class SimpleEntityProvider implements EntityProvider {
     }
 
     protected abstract RendererProvider getRendererProvider();
+
     @Nullable
     protected abstract PhysicsProvider getPhysicsProvider(Vector2 originPosition);
+
     protected abstract void addExtraComponents(Entity e);
 }

@@ -15,6 +15,8 @@ public class SimpleTextureComponentProvider implements RendererProvider {
 
     @Override
     public RendererComponent createRenderer(GameWorld world) {
-        return new SimpleTextureComponent(texture);
+        SimpleTextureComponent textureComponent = world.getEntityWorld().createComponent(SimpleTextureComponent.class);
+        textureComponent.setTexture(texture);
+        return textureComponent;
     }
 }

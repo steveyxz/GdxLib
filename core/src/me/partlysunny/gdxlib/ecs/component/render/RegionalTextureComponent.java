@@ -20,4 +20,9 @@ public class RegionalTextureComponent implements RendererComponent {
     public void setTextureRegion(TextureRegion textureRegion) {
         this.textureRegion = textureRegion;
     }
+
+    @Override
+    public void reset() {
+        textureRegion = null;
+    }
 }

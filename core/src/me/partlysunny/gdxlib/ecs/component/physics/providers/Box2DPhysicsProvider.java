@@ -17,6 +17,9 @@ public class Box2DPhysicsProvider implements PhysicsProvider {
 
     @Override
     public PhysicsComponent createPhysics(GameWorld world) {
-        return new Box2DPhysicsComponent(body, decelerationRate);
+        Box2DPhysicsComponent component = world.getEntityWorld().createComponent(Box2DPhysicsComponent.class);
+        component.setLinkedBody(body);
+        component.setDecelerationRate(decelerationRate);
+        return component;
     }
 }

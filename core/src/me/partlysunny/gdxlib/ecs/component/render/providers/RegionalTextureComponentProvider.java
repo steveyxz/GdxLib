@@ -27,6 +27,8 @@ public class RegionalTextureComponentProvider implements RendererProvider {
 
     @Override
     public RendererComponent createRenderer(GameWorld world) {
-        return new RegionalTextureComponent(region);
+        RegionalTextureComponent component = world.getEntityWorld().createComponent(RegionalTextureComponent.class);
+        component.setTextureRegion(region);
+        return component;
     }
 }

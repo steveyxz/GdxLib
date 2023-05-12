@@ -33,7 +33,10 @@ public class PlayerEntity extends SimpleEntityProvider {
 
     @Override
     protected void addExtraComponents(Entity e) {
-        e.add(world.getEntityWorld().createComponent(CameraFollowComponent.class));
+        CameraFollowComponent cameraFollow = world.getEntityWorld().createComponent(CameraFollowComponent.class);
+        cameraFollow.setFollowSpeed(0.01f);
+        cameraFollow.setFollowSpeedFunction(CameraFollowComponent.SLOWER_AS_CLOSER);
+        e.add(cameraFollow);
         ControllerComponent component = world.getEntityWorld().createComponent(ControllerComponent.class);
         component.setController(new MovementController(e));
         e.add(component);

@@ -16,7 +16,6 @@ public class PhysicsSystem extends IteratingSystem {
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-        TransformComponent transformComponent = Mappers.get(TransformComponent.class, entity);
         Box2DPhysicsComponent physicsComponent = Mappers.get(Box2DPhysicsComponent.class, entity);
         Body attachedBody = physicsComponent.getLinkedBody();
         attachedBody.setLinearVelocity(attachedBody.getLinearVelocity().scl(physicsComponent.getDecelerationRate()));

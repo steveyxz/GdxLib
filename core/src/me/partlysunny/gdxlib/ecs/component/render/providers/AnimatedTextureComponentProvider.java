@@ -35,6 +35,8 @@ public class AnimatedTextureComponentProvider implements RendererProvider {
 
     @Override
     public RendererComponent createRenderer(GameWorld world) {
-        return new AnimatedTextureComponent(animation);
+        AnimatedTextureComponent component = world.getEntityWorld().createComponent(AnimatedTextureComponent.class);
+        component.setAnimation(animation);
+        return component;
     }
 }

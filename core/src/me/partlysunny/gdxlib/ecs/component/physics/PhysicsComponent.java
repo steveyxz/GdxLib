@@ -2,8 +2,9 @@ package me.partlysunny.gdxlib.ecs.component.physics;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Pool;
 
-public interface PhysicsComponent extends Component {
+public interface PhysicsComponent extends Component, Pool.Poolable {
 
     /**
      * Gets the linear velocity of the entity

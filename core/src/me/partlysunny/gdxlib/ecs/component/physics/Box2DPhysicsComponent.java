@@ -21,6 +21,10 @@ public class Box2DPhysicsComponent implements PhysicsComponent {
         return linkedBody;
     }
 
+    public void setLinkedBody(Body linkedBody) {
+        this.linkedBody = linkedBody;
+    }
+
     @Override
     public Vector2 getLinearVelocity() {
         return linkedBody.getLinearVelocity();
@@ -57,5 +61,11 @@ public class Box2DPhysicsComponent implements PhysicsComponent {
 
     public void setDecelerationRate(float decelerationRate) {
         this.decelerationRate = decelerationRate;
+    }
+
+    @Override
+    public void reset() {
+        linkedBody = null;
+        decelerationRate = 0;
     }
 }

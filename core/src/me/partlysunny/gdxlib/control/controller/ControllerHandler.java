@@ -12,11 +12,7 @@ public class ControllerHandler {
     private final Map<String, List<Controller>> controllers = new HashMap<>();
 
     public void addController(Controller controller, String action) {
-        List<Controller> list = controllers.get(action);
-        if (list == null) {
-            list = new ArrayList<>();
-            controllers.put(action, list);
-        }
+        List<Controller> list = controllers.computeIfAbsent(action, k -> new ArrayList<>());
         list.add(controller);
     }
 

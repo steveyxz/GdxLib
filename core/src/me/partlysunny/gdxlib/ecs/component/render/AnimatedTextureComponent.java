@@ -38,4 +38,10 @@ public class AnimatedTextureComponent implements RendererComponent {
     public void tickStateTime(float deltaTime) {
         this.stateTime += deltaTime;
     }
+
+    @Override
+    public void reset() {
+        animation = null;
+        stateTime = 0;
+    }
 }

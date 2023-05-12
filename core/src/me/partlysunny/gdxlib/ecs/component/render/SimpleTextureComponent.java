@@ -20,4 +20,9 @@ public class SimpleTextureComponent implements RendererComponent {
     public void setTexture(Texture texture) {
         this.texture = texture;
     }
+
+    @Override
+    public void reset() {
+        texture = null;
+    }
 }

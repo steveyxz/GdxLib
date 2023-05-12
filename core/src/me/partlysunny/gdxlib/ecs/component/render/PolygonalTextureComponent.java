@@ -16,4 +16,13 @@ public class PolygonalTextureComponent implements RendererComponent {
     public PolygonSprite getPolygonSprite() {
         return polygonSprite;
     }
+
+    @Override
+    public void reset() {
+        polygonSprite = null;
+    }
+
+    public void setPolygonSprite(PolygonSprite polygonSprite) {
+        this.polygonSprite = polygonSprite;
+    }
 }

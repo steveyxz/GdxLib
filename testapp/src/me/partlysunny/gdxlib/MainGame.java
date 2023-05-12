@@ -19,7 +19,7 @@ import me.partlysunny.gdxlib.util.camera.OrthoCameraHandler;
 public class MainGame extends GdxGame {
     @Override
     protected Vector2 getPhysicsGravity() {
-        return new Vector2(0, -Physics.toMeters(150));
+        return new Vector2(0, -Physics.toMeters(400));
     }
 
     @Override

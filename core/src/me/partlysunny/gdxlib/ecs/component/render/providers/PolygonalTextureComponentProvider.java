@@ -36,6 +36,8 @@ public class PolygonalTextureComponentProvider implements RendererProvider {
 
     @Override
     public RendererComponent createRenderer(GameWorld world) {
-        return new PolygonalTextureComponent(polygonSprite);
+        PolygonalTextureComponent component = world.getEntityWorld().createComponent(PolygonalTextureComponent.class);
+        component.setPolygonSprite(polygonSprite);
+        return component;
     }
 }

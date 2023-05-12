@@ -6,6 +6,7 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import me.partlysunny.gdxlib.ecs.component.Mappers;
+import me.partlysunny.gdxlib.ecs.component.render.VisibilityComponent;
 import me.partlysunny.gdxlib.ecs.component.standard.TransformComponent;
 
 public abstract class RendererSystem<T extends Component> extends IteratingSystem {
@@ -21,6 +22,10 @@ public abstract class RendererSystem<T extends Component> extends IteratingSyste
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
+        VisibilityComponent visible = Mappers.get(VisibilityComponent.class, entity);
+        if (visible != null && !visible.isVisible()) {
+            return;
+        }
         render(entity, Mappers.get(TransformComponent.class, entity), Mappers.get(targetedComponent, entity), deltaTime);
     }
 

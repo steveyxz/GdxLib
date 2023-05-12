@@ -23,7 +23,7 @@ public final class SystemManager {
         entityWorld.addSystem(new AnimatedRendererSystem(batchSet.getSpriteBatch()));
         entityWorld.addSystem(new RegionalRendererSystem(batchSet.getSpriteBatch()));
         entityWorld.addSystem(new SimpleRendererSystem(batchSet.getSpriteBatch()));
-        entityWorld.addSystem(new ShapeRendererSystem(batchSet.getPolygonSpriteBatch()));
+        entityWorld.addSystem(new PolygonalRendererSystem(batchSet.getPolygonSpriteBatch()));
         //Physics Systems
         entityWorld.addSystem(new PositionSyncerSystem());
         entityWorld.addSystem(new PhysicsSystem());

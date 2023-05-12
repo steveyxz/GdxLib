@@ -8,7 +8,7 @@ import me.partlysunny.gdxlib.ecs.GameWorld;
 import me.partlysunny.gdxlib.ecs.component.physics.providers.Box2DPhysicsProvider;
 import me.partlysunny.gdxlib.ecs.component.physics.providers.PhysicsProvider;
 import me.partlysunny.gdxlib.ecs.component.render.providers.RendererProvider;
-import me.partlysunny.gdxlib.ecs.component.render.providers.ShapeTextureComponentProvider;
+import me.partlysunny.gdxlib.ecs.component.render.providers.PolygonalTextureComponentProvider;
 import me.partlysunny.gdxlib.ecs.entity.SimpleEntityProvider;
 import me.partlysunny.gdxlib.util.BodyBuilder;
 import me.partlysunny.gdxlib.util.Physics;
@@ -21,7 +21,7 @@ public class GroundEntity extends SimpleEntityProvider {
 
     @Override
     protected RendererProvider getRendererProvider() {
-        return new ShapeTextureComponentProvider(Color.WHITE, ShapeBuilder.radialRect(Vector2.Zero, new Vector2(5000, 50)));
+        return new PolygonalTextureComponentProvider(Color.WHITE, ShapeBuilder.radialRect(Vector2.Zero, new Vector2(5000, 50)));
     }
 
     @Override

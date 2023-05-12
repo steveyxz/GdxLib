@@ -9,24 +9,24 @@ import com.badlogic.gdx.math.EarClippingTriangulator;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import me.partlysunny.gdxlib.ecs.GameWorld;
 import me.partlysunny.gdxlib.ecs.component.render.RendererComponent;
-import me.partlysunny.gdxlib.ecs.component.render.ShapeTextureComponent;
+import me.partlysunny.gdxlib.ecs.component.render.PolygonalTextureComponent;
 import me.partlysunny.gdxlib.util.PolygonHelper;
 import me.partlysunny.gdxlib.util.resource.ResourceManager;
 
-public class ShapeTextureComponentProvider implements RendererProvider {
+public class PolygonalTextureComponentProvider implements RendererProvider {
 
     private static final EarClippingTriangulator TRIANGULATOR = new EarClippingTriangulator();
     private final PolygonSprite polygonSprite;
 
-    public ShapeTextureComponentProvider(PolygonSprite polygonSprite) {
+    public PolygonalTextureComponentProvider(PolygonSprite polygonSprite) {
         this.polygonSprite = polygonSprite;
     }
 
-    public ShapeTextureComponentProvider(PolygonRegion polygonRegion) {
+    public PolygonalTextureComponentProvider(PolygonRegion polygonRegion) {
         this.polygonSprite = new PolygonSprite(polygonRegion);
     }
 
-    public ShapeTextureComponentProvider(Color color, PolygonShape polygonShape) {
+    public PolygonalTextureComponentProvider(Color color, PolygonShape polygonShape) {
         float[] polygonVertices = PolygonHelper.getVerticesAsFloat(polygonShape);
         Texture texture = ResourceManager.getInstance().getColorTexture(color);
         TextureRegion colorRegion = new TextureRegion(texture);
@@ -36,6 +36,6 @@ public class ShapeTextureComponentProvider implements RendererProvider {
 
     @Override
     public RendererComponent createRenderer(GameWorld world) {
-        return new ShapeTextureComponent(polygonSprite);
+        return new PolygonalTextureComponent(polygonSprite);
     }
 }

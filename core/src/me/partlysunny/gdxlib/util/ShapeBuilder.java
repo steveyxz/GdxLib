@@ -106,4 +106,9 @@ public class ShapeBuilder {
         return shape;
     }
 
+    public static PolygonShape fromVertices(Vector2[] vertices) {
+        PolygonShape shape = new PolygonShape();
+        shape.set(vertices);
+        return shape;
+    }
 }

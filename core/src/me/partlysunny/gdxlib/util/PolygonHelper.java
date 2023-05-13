@@ -27,4 +27,28 @@ public final class PolygonHelper {
         return vertices;
     }
 
+    public static Vector2 center(Vector2[] shape) {
+        float x = 0;
+        float y = 0;
+        for (Vector2 vertex : shape) {
+            x += vertex.x;
+            y += vertex.y;
+        }
+        return new Vector2(x / shape.length, y / shape.length);
+    }
+
+    public static PolygonShape scale(PolygonShape shape, float scale) {
+        Vector2[] vertices = getVertices(shape);
+        if (vertices.length == 0) {
+            return ShapeBuilder.fromVertices(vertices);
+        }
+        Vector2 fixed = center(vertices);
+        for (Vector2 vertex : vertices) {
+            vertex.x = fixed.x + (vertex.x - fixed.x) * scale;
+            vertex.y = fixed.y + (vertex.y - fixed.y) * scale;
+        }
+        PolygonShape polygonShape = ShapeBuilder.fromVertices(vertices);
+        return polygonShape;
+    }
+
 }

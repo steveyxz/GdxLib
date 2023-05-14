@@ -18,20 +18,20 @@ public class ContactListener extends IteratingSystem implements com.badlogic.gdx
         physicsWorld.setContactListener(this);
     }
 
-    private static void processContactWithBody(PhysicsContactComponent contactComponent, Box2DPhysicsComponent physicsComponent, ContactInfo contact, Body otherBody) {
+    private static void processContactWithBody(Entity entity, PhysicsContactComponent contactComponent, Box2DPhysicsComponent physicsComponent, ContactInfo contact, Body otherBody) {
         if (physicsComponent.getLinkedBody() == otherBody) {
             switch (contact.getType()) {
                 case BEGIN:
-                    contactComponent.getContactEnter().accept(contact.getContact());
+                    contactComponent.getContactEnter().accept(contact.getContact(), entity);
                     break;
                 case END:
-                    contactComponent.getContactExit().accept(contact.getContact());
+                    contactComponent.getContactExit().accept(contact.getContact(), entity);
                     break;
                 case PRE_SOLVE:
-                    contactComponent.getContactPreSolve().accept(contact.getContact());
+                    contactComponent.getContactPreSolve().accept(contact.getContact(), entity);
                     break;
                 case POST_SOLVE:
-                    contactComponent.getContactPostSolve().accept(contact.getContact());
+                    contactComponent.getContactPostSolve().accept(contact.getContact(), entity);
                     break;
             }
         }
@@ -63,8 +63,8 @@ public class ContactListener extends IteratingSystem implements com.badlogic.gdx
         Box2DPhysicsComponent physicsComponent = Mappers.get(Box2DPhysicsComponent.class, entity);
         while (!contactQueue.isEmpty()) {
             ContactInfo contact = contactQueue.poll();
-            processContactWithBody(contactComponent, physicsComponent, contact, contact.getContact().getFixtureA().getBody());
-            processContactWithBody(contactComponent, physicsComponent, contact, contact.getContact().getFixtureB().getBody());
+            processContactWithBody(entity, contactComponent, physicsComponent, contact, contact.getContact().getFixtureA().getBody());
+            processContactWithBody(entity, contactComponent, physicsComponent, contact, contact.getContact().getFixtureB().getBody());
             ;
         }
     }

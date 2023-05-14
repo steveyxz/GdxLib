@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.Pool;
 
 /**
  * Represents the position and the rotation of an object in render space
+ * This component will contain measurements in pixel space, not in physics space
  * The main purpose of this component is to be used by the renderer system
  * If the object has a body attached, the position will simply sync to the body's position,
  * so it would be useless to change the properties of this component

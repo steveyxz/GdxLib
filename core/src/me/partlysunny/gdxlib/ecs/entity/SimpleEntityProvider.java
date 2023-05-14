@@ -6,6 +6,7 @@ import me.partlysunny.gdxlib.ecs.GameWorld;
 import me.partlysunny.gdxlib.ecs.component.physics.providers.PhysicsProvider;
 import me.partlysunny.gdxlib.ecs.component.render.providers.RendererProvider;
 import me.partlysunny.gdxlib.ecs.component.standard.TransformComponent;
+import me.partlysunny.gdxlib.util.Physics;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class SimpleEntityProvider implements EntityProvider {
@@ -16,6 +17,13 @@ public abstract class SimpleEntityProvider implements EntityProvider {
         this.world = world;
     }
 
+    /**
+     * Creates a singular entity of the given class at the given position.
+     * @param clazz The class of the entity to create.
+     * @param world The world to create the entity in.
+     * @param originPosition The position to create the entity at in pixels.
+     * @return The created entity.
+     */
     public static Entity createSingular(Class<? extends SimpleEntityProvider> clazz, GameWorld world, Vector2 originPosition) {
         try {
             return clazz.getConstructor(GameWorld.class).newInstance(world).createEntity(originPosition);
@@ -29,7 +37,7 @@ public abstract class SimpleEntityProvider implements EntityProvider {
         Entity entity = world.getEntityWorld().createEntity();
         addPosition(entity, originPosition);
         addRenderer(entity);
-        addPhysics(entity, originPosition);
+        addPhysics(entity, Physics.toMeters(originPosition));
         addExtraComponents(entity);
         if (autoAdd()) {
             world.getEntityWorld().addEntity(entity);
@@ -48,7 +56,10 @@ public abstract class SimpleEntityProvider implements EntityProvider {
     }
 
     protected void addRenderer(Entity e) {
-        e.add(getRendererProvider().createRenderer(world));
+        RendererProvider rendererProvider = getRendererProvider();
+        if (rendererProvider != null) {
+            e.add(rendererProvider.createRenderer(world));
+        }
     }
 
     protected void addPhysics(Entity e, Vector2 originPosition) {
@@ -58,6 +69,7 @@ public abstract class SimpleEntityProvider implements EntityProvider {
         }
     }
 
+    @Nullable
     protected abstract RendererProvider getRendererProvider();
 
     @Nullable

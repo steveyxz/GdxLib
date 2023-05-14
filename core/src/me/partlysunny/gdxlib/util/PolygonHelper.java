@@ -47,8 +47,7 @@ public final class PolygonHelper {
             vertex.x = fixed.x + (vertex.x - fixed.x) * scale;
             vertex.y = fixed.y + (vertex.y - fixed.y) * scale;
         }
-        PolygonShape polygonShape = ShapeBuilder.fromVertices(vertices);
-        return polygonShape;
+        return ShapeBuilder.fromVertices(vertices);
     }
 
 }

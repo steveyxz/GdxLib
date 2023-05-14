@@ -9,7 +9,12 @@ import me.partlysunny.gdxlib.GdxGame;
 public class Debug {
 
     private static final Logger LOGGER = new Logger("GdxLib", Logger.INFO);
+    private static boolean renderPhysicsDebug = true;
     private static final Box2DDebugRenderer BOX_2D_DEBUG_RENDERER = new Box2DDebugRenderer();
+
+    public static void setRenderPhysicsDebug(boolean renderPhysicsDebug) {
+        Debug.renderPhysicsDebug = renderPhysicsDebug;
+    }
 
     public static void setLogLevel(int level) {
         LOGGER.setLevel(level);
@@ -40,7 +45,7 @@ public class Debug {
     }
 
     public static void renderBox2DDebug() {
-        if (LOGGER.getLevel() == Logger.DEBUG) {
+        if (LOGGER.getLevel() == Logger.DEBUG && renderPhysicsDebug) {
             Matrix4 matrix = GdxGame.getInstance().getCamera().combined.cpy();
             matrix.scale(Physics.PPM, Physics.PPM, 0);
             BOX_2D_DEBUG_RENDERER.render(GdxGame.getInstance().getGameWorld().getPhysicsWorld(), matrix);

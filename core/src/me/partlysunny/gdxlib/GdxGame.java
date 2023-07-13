@@ -1,6 +1,7 @@
 package me.partlysunny.gdxlib;
 
 import com.badlogic.ashley.core.PooledEngine;
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;

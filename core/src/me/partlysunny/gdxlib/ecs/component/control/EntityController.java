@@ -7,7 +7,8 @@ import me.partlysunny.gdxlib.control.controller.Controller;
 /**
  * Class to connect ashley ECS with the controller system
  * Should only be used in conjunction with the controller component, otherwise you
- * may find yourself with redundant controllers being created
+ * may find yourself with redundant controllers being created, as this class automatically
+ * adds itself to the controller handler.
  */
 public abstract class EntityController implements Controller {
 

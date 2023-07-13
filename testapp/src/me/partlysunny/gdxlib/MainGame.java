@@ -8,6 +8,9 @@ import me.partlysunny.gdxlib.control.action.KeyAction;
 import me.partlysunny.gdxlib.ecs.entity.SimpleEntityProvider;
 import me.partlysunny.gdxlib.entities.GroundEntity;
 import me.partlysunny.gdxlib.entities.PlayerEntity;
+import me.partlysunny.gdxlib.tmx.TileMapInstance;
+import me.partlysunny.gdxlib.tmx.TileMapManager;
+import me.partlysunny.gdxlib.tmx.TmxLoader;
 import me.partlysunny.gdxlib.util.Pair;
 import me.partlysunny.gdxlib.util.Physics;
 import me.partlysunny.gdxlib.util.camera.CameraHandler;
@@ -38,6 +41,10 @@ public class MainGame extends GdxGame {
     protected void createOriginalEntities() {
         SimpleEntityProvider.createSingular(PlayerEntity.class, gameWorld, new Vector2(0, 0));
         SimpleEntityProvider.createSingular(GroundEntity.class, gameWorld, new Vector2(0, -200));
+        TileMapInstance test1 = TmxLoader.load("test1.tmx");
+        test1.setPosition(new Vector2(-150, -150));
+        test1.setScale(new Vector2(4, 4));
+        TileMapManager.add(test1);
     }
 
     @Override

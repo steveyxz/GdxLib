@@ -1,7 +1,13 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
 sourceCompatibility = 1.8
+
 dependencies {
     implementation 'org.jetbrains:annotations-java5:24.0.0'
 }
+
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 sourceSets.main.java.srcDirs = ["src/"]

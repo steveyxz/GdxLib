@@ -28,4 +28,11 @@ public interface PhysicsComponent extends Component, Pool.Poolable {
      */
     float getRotation();
 
+    /**
+     * Rotation in radians
+     *
+     * @return The rotation in radians, not degrees
+     */
+    float getRotationRads();
+
 }

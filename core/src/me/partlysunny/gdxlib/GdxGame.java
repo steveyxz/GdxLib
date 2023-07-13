@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -13,6 +14,8 @@ import me.partlysunny.gdxlib.control.ControlHub;
 import me.partlysunny.gdxlib.ecs.GameWorld;
 import me.partlysunny.gdxlib.ecs.systems.LateDestroyer;
 import me.partlysunny.gdxlib.ecs.systems.render.BatchSet;
+import me.partlysunny.gdxlib.tmx.TileMapInstance;
+import me.partlysunny.gdxlib.tmx.TileMapManager;
 import me.partlysunny.gdxlib.util.Debug;
 import me.partlysunny.gdxlib.util.camera.CameraHandler;
 import me.partlysunny.gdxlib.util.resource.ResourceManager;
@@ -60,6 +63,11 @@ public abstract class GdxGame extends ApplicationAdapter {
         //Update any custom logic that may exist
         update(delta);
         //Update the game world, rendering with a BatchSet
+        if (camera instanceof OrthographicCamera) {
+            OrthographicCamera oth = (OrthographicCamera) camera;
+            TileMapManager.setView(oth);
+            TileMapManager.render();
+        }
         batchSet.setProjectionMatrix(camera.combined);
         batchSet.begin();
         gameWorld.update(delta);

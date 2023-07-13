@@ -55,6 +55,11 @@ public class Box2DPhysicsComponent implements PhysicsComponent {
         return (float) FastTrig.toDegrees(linkedBody.getAngle());
     }
 
+    @Override
+    public float getRotationRads() {
+        return linkedBody.getAngle();
+    }
+
     public float getDecelerationRate() {
         return decelerationRate;
     }

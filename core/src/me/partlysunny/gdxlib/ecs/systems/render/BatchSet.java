@@ -3,6 +3,7 @@ package me.partlysunny.gdxlib.ecs.systems.render;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.math.Vector2;
 
 public class BatchSet {
 

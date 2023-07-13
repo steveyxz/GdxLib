@@ -1,5 +1,8 @@
 package me.partlysunny.gdxlib.control.action;
 
+/**
+ * An action that is triggered by a key press
+ */
 public class KeyAction implements Action {
 
     //Use magic values from Input.Keys class

@@ -2,6 +2,9 @@ package me.partlysunny.gdxlib.control.action;
 
 import com.badlogic.gdx.Gdx;
 
+/**
+ * Action context implementation for LibGDX
+ */
 public class GdxContext implements ActionContext {
     @Override
     public boolean isKeyDown(int keyCode) {

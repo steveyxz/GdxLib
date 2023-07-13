@@ -1,5 +1,8 @@
 package me.partlysunny.gdxlib.control.action;
 
+/**
+ * An action that is triggered by a mouse button press
+ */
 public class MouseAction implements Action {
 
     //Use magic values from Input.Buttons class

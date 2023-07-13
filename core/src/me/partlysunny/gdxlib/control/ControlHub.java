@@ -5,6 +5,10 @@ import me.partlysunny.gdxlib.control.action.ActionMap;
 import me.partlysunny.gdxlib.control.action.GdxContext;
 import me.partlysunny.gdxlib.control.controller.ControllerHandler;
 
+/**
+ * The ControlHub is the central hub for all control related activities. It is responsible for
+ * managing the controller handler, action dispatcher, and action map.
+ */
 public class ControlHub {
 
     private final ControllerHandler controllerHandler;

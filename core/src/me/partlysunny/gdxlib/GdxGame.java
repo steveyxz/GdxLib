@@ -80,6 +80,9 @@ public abstract class GdxGame extends ApplicationAdapter {
         controlHub.getActionDispatcher().update();
         //Destroy entities that were marked for destruction
         LateDestroyer.update();
+        if (isCameraPixelPerfect()) {
+            camera.position.set((int) camera.position.x, (int) camera.position.y, 0);
+        }
         camera.update();
     }
 
@@ -113,6 +116,10 @@ public abstract class GdxGame extends ApplicationAdapter {
 
     public ControlHub getControlHub() {
         return controlHub;
+    }
+
+    protected boolean isCameraPixelPerfect() {
+        return true;
     }
 
     protected abstract Vector2 getPhysicsGravity();

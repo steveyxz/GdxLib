@@ -6,6 +6,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Disposable;
+import me.partlysunny.gdxlib.ecs.GameWorld;
 import me.partlysunny.gdxlib.ecs.entity.EntityProvider;
 
 public class TileMapInstance implements Disposable {
@@ -51,13 +52,13 @@ public class TileMapInstance implements Disposable {
         tileMap.dispose();
     }
 
-    public void spawnObjects() {
+    public void spawnObjects(GameWorld world) {
         tileMap.getLayers().forEach(layer -> {
             layer.getObjects().forEach(object -> {
                 String type = object.getProperties().get("type", String.class);
                 TileObjectEntityTransformer transformer = MapObjects.transform(type);
                 if (transformer != null) {
-                    EntityProvider provider = transformer.fromTileObject(object);
+                    EntityProvider provider = transformer.fromTileObject(world, object);
                     //Spawn the entity
                     provider.createEntity(new Vector2(object.getProperties().get("x", Float.class), object.getProperties().get("y", Float.class)));
                 }

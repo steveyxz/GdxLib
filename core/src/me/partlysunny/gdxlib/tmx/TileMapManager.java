@@ -1,6 +1,7 @@
 package me.partlysunny.gdxlib.tmx;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import me.partlysunny.gdxlib.ecs.GameWorld;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +18,13 @@ public class TileMapManager {
         tileMaps.forEach(TileMapInstance::render);
     }
 
-    public static void spawnObjects() {
-        tileMaps.forEach(TileMapInstance::spawnObjects);
+    /**
+     * Spawns all objects in all tile maps
+     * This will be automatically called by GdxGame.create()
+     * @param world the game world to create the objects in
+     */
+    public static void spawnObjects(GameWorld world) {
+        tileMaps.forEach(tileMap -> tileMap.spawnObjects(world));
     }
 
     public static void setView(OrthographicCamera camera) {

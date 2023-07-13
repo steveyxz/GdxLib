@@ -52,6 +52,8 @@ public abstract class GdxGame extends ApplicationAdapter {
         gameWorld = new GameWorld(physicsWorld, entityWorld, batchSet);
         LateDestroyer.init(gameWorld);
         createOriginalEntities();
+        Debug.logDebug("Initializing tile map entities");
+        TileMapManager.spawnObjects(gameWorld);
     }
 
 

@@ -7,7 +7,9 @@ import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import me.partlysunny.gdxlib.ecs.component.Mappers;
 import me.partlysunny.gdxlib.ecs.component.render.VisibilityComponent;
+import me.partlysunny.gdxlib.ecs.component.standard.ScaleComponent;
 import me.partlysunny.gdxlib.ecs.component.standard.TransformComponent;
+import org.jetbrains.annotations.Nullable;
 
 public abstract class RendererSystem<T extends Component> extends IteratingSystem {
 
@@ -26,9 +28,9 @@ public abstract class RendererSystem<T extends Component> extends IteratingSyste
         if (visible != null && !visible.isVisible()) {
             return;
         }
-        render(entity, Mappers.get(TransformComponent.class, entity), Mappers.get(targetedComponent, entity), deltaTime);
+        render(entity, Mappers.get(TransformComponent.class, entity), Mappers.get(ScaleComponent.class, entity), Mappers.get(targetedComponent, entity), deltaTime);
     }
 
-    protected abstract void render(Entity entity, TransformComponent position, T renderComponent, float deltaTime);
+    protected abstract void render(Entity entity, TransformComponent position, @Nullable ScaleComponent scale, T renderComponent, float deltaTime);
 
 }

@@ -50,4 +50,34 @@ public final class PolygonHelper {
         return ShapeBuilder.fromVertices(vertices);
     }
 
+    public static float getWidth(PolygonShape shape) {
+        Vector2[] vertices = getVertices(shape);
+        float minX = vertices[0].x;
+        float maxX = vertices[0].x;
+        for (Vector2 vertex : vertices) {
+            if (vertex.x < minX) {
+                minX = vertex.x;
+            }
+            if (vertex.x > maxX) {
+                maxX = vertex.x;
+            }
+        }
+        return maxX - minX;
+    }
+
+    public static float getHeight(PolygonShape shape) {
+        Vector2[] vertices = getVertices(shape);
+        float minY = vertices[0].y;
+        float maxY = vertices[0].y;
+        for (Vector2 vertex : vertices) {
+            if (vertex.y < minY) {
+                minY = vertex.y;
+            }
+            if (vertex.y > maxY) {
+                maxY = vertex.y;
+            }
+        }
+        return maxY - minY;
+    }
+
 }

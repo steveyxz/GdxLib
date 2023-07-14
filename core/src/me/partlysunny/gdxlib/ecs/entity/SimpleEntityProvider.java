@@ -38,6 +38,7 @@ public abstract class SimpleEntityProvider implements EntityProvider {
         addPosition(entity, originPosition);
         addRenderer(entity);
         addPhysics(entity, Physics.toMeters(originPosition));
+        addScale(entity);
         addExtraComponents(entity);
         if (autoAdd()) {
             world.getEntityWorld().addEntity(entity);
@@ -68,6 +69,8 @@ public abstract class SimpleEntityProvider implements EntityProvider {
             e.add(physicsProvider.createPhysics(world));
         }
     }
+
+    protected void addScale(Entity e) {}
 
     @Nullable
     protected abstract RendererProvider getRendererProvider();

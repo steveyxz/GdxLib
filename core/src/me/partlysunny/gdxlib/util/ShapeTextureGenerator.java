@@ -18,7 +18,7 @@ public final class ShapeTextureGenerator {
         pixmap.setColor(color);
         pixmap.fillCircle(radius, radius, radius);
         Texture texture = new Texture(pixmap, withMipMaps);
-        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        texture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
         return new TextureRegion(texture);
     }
 

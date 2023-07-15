@@ -1,4 +1,4 @@
-package me.partlysunny.gdxlib.entities;
+package me.partlysunny.gdxlib.testOne;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.Color;
@@ -7,16 +7,15 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Shape;
 import me.partlysunny.gdxlib.ecs.GameWorld;
 import me.partlysunny.gdxlib.ecs.component.Mappers;
+import me.partlysunny.gdxlib.ecs.component.ai.DoNotDodgeComponent;
 import me.partlysunny.gdxlib.ecs.component.ai.SteerableObjectComponent;
-import me.partlysunny.gdxlib.ecs.component.control.ControllerComponent;
 import me.partlysunny.gdxlib.ecs.component.physics.Box2DPhysicsComponent;
-import me.partlysunny.gdxlib.ecs.component.standard.CameraFollowComponent;
 import me.partlysunny.gdxlib.ecs.entity.ShapeEntityProvider;
 import me.partlysunny.gdxlib.util.Physics;
 import me.partlysunny.gdxlib.util.ShapeBuilder;
 
-public class PlayerEntity extends ShapeEntityProvider {
-    public PlayerEntity(GameWorld world) {
+public class InvisibleObstacleEntity extends ShapeEntityProvider {
+    public InvisibleObstacleEntity(GameWorld world) {
         super(world);
     }
 
@@ -32,26 +31,19 @@ public class PlayerEntity extends ShapeEntityProvider {
 
     @Override
     protected Shape getShape() {
-        return ShapeBuilder.circle(Vector2.Zero, Physics.toMeters(50));
+        return ShapeBuilder.nSidedPolygon(Vector2.Zero, 3, Physics.toMeters(50));
     }
 
     @Override
     protected Color getColor() {
-        return Color.LIME;
+        return Color.PURPLE;
     }
-
 
     @Override
     protected void addExtraComponents(Entity e) {
-        CameraFollowComponent cameraFollow = world.getEntityWorld().createComponent(CameraFollowComponent.class);
-        cameraFollow.setFollowSpeed(0.01f);
-        cameraFollow.setFollowSpeedFunction(CameraFollowComponent.SLOWER_AS_CLOSER);
-        e.add(cameraFollow);
-        ControllerComponent controller = world.getEntityWorld().createComponent(ControllerComponent.class);
-        controller.setController(new MovementController(e));
-        e.add(controller);
+        DoNotDodgeComponent doNotDodgeComponent = world.getEntityWorld().createComponent(DoNotDodgeComponent.class);
         SteerableObjectComponent steerableObjectComponent = world.getEntityWorld().createComponent(SteerableObjectComponent.class);
         steerableObjectComponent.init(Mappers.get(Box2DPhysicsComponent.class, e), Physics.toMeters(50));
-        e.add(steerableObjectComponent);
+        e.add(doNotDodgeComponent);
     }
 }

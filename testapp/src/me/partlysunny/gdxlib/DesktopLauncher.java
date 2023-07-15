@@ -9,6 +9,9 @@ public class DesktopLauncher {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
         config.setForegroundFPS(60);
         config.setTitle("Testing Game!");
+        //Emulate mobile aspect ratio
+        config.setWindowedMode(360, 640);
+        config.setResizable(false);
         new Lwjgl3Application(new MainGame(), config);
     }
 }

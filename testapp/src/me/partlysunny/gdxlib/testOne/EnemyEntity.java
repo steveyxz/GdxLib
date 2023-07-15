@@ -1,4 +1,4 @@
-package me.partlysunny.gdxlib.entities;
+package me.partlysunny.gdxlib.testOne;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.Color;

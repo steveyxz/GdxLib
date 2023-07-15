@@ -86,14 +86,6 @@ public abstract class Scene extends ManagedScreen {
 
     @Override
     public void dispose() {
-        Debug.logDebug("STARTING DISPOSE SEQUENCE FOR SCENE " + this.getClass().getSimpleName() + ":");
-        //Dispose of all resources
-        Debug.logDebug("Disposing of sprite renderers...");
-        parent.batchSet.dispose();
-        Debug.logDebug("Disposing of game world...");
-        gameWorld.dispose();
-        Debug.logDebug("Disposing of resources...");
-        ResourceManager.getInstance().dispose();
     }
 
     public GameWorld getGameWorld() {

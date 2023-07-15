@@ -4,11 +4,14 @@ import de.eskalon.commons.screen.ManagedScreen;
 import de.eskalon.commons.screen.ScreenManager;
 import de.eskalon.commons.screen.transition.ScreenTransition;
 import de.eskalon.commons.screen.transition.impl.BlendingTransition;
+import me.partlysunny.gdxlib.flappyBird.FlappyBirdScene;
+import me.partlysunny.gdxlib.testOne.TestOneScene;
 
 public class MainGame extends GdxGame {
     @Override
     public void initializeScreens(ScreenManager<ManagedScreen, ScreenTransition> screenManager) {
-        screenManager.addScreen("main", new MainScene(this));
+        screenManager.addScreen("test1", new TestOneScene(this));
+        screenManager.addScreen("flappybird", new FlappyBirdScene(this));
     }
 
     @Override
@@ -18,7 +21,7 @@ public class MainGame extends GdxGame {
 
     @Override
     protected String getInitialScreen() {
-        return "main";
+        return "flappybird";
     }
 
     @Override

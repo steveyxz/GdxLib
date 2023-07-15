@@ -64,6 +64,7 @@ public abstract class GdxGame extends ManagedGame<ManagedScreen, ScreenTransitio
     @Override
     public void dispose() {
         super.dispose();
+        batchSet.dispose();
     }
 
     public Scene getCurrentScene() {

@@ -1,16 +1,18 @@
-package me.partlysunny.gdxlib;
+package me.partlysunny.gdxlib.testOne;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
+import me.partlysunny.gdxlib.GdxGame;
+import me.partlysunny.gdxlib.Scene;
 import me.partlysunny.gdxlib.control.action.ActionMap;
 import me.partlysunny.gdxlib.control.action.ActionSet;
 import me.partlysunny.gdxlib.control.action.KeyAction;
 import me.partlysunny.gdxlib.ecs.entity.SimpleEntityProvider;
-import me.partlysunny.gdxlib.entities.EnemyEntity;
-import me.partlysunny.gdxlib.entities.GroundEntity;
-import me.partlysunny.gdxlib.entities.ObstacleEntity;
-import me.partlysunny.gdxlib.entities.PlayerEntity;
+import me.partlysunny.gdxlib.testOne.EnemyEntity;
+import me.partlysunny.gdxlib.testOne.GroundEntity;
+import me.partlysunny.gdxlib.testOne.ObstacleEntity;
+import me.partlysunny.gdxlib.testOne.PlayerEntity;
 import me.partlysunny.gdxlib.tmx.TileMapInstance;
 import me.partlysunny.gdxlib.tmx.TileMapManager;
 import me.partlysunny.gdxlib.tmx.TmxLoader;
@@ -18,8 +20,8 @@ import me.partlysunny.gdxlib.util.Pair;
 import me.partlysunny.gdxlib.util.camera.CameraHandler;
 import me.partlysunny.gdxlib.util.camera.OrthoCameraHandler;
 
-public class MainScene extends Scene {
-    public MainScene(GdxGame parent) {
+public class TestOneScene extends Scene {
+    public TestOneScene(GdxGame parent) {
         super(parent);
     }
 

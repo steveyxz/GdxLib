@@ -125,4 +125,22 @@ public class ActionMap implements Iterable<String> {
     public Iterator<String> iterator() {
         return actionMap.keySet().iterator();
     }
+
+    public static final class Builder {
+        private final ActionMap actionMap = new ActionMap();
+
+        public Builder addAction(String actionName, Action... actionCodes) {
+            actionMap.addActions(actionName, actionCodes);
+            return this;
+        }
+
+        public Builder addAction(String actionName, ActionSet actionSet) {
+            actionMap.addActions(actionName, actionSet);
+            return this;
+        }
+
+        public ActionMap build() {
+            return actionMap;
+        }
+    }
 }

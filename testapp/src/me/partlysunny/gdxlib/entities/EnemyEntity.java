@@ -10,7 +10,6 @@ import me.partlysunny.gdxlib.ecs.GameWorld;
 import me.partlysunny.gdxlib.ecs.component.Mappers;
 import me.partlysunny.gdxlib.ecs.component.ai.SteerableObjectComponent;
 import me.partlysunny.gdxlib.ecs.component.ai.SteeringComponent;
-import me.partlysunny.gdxlib.ecs.component.ai.behaviours.BasicPursueBehaviour;
 import me.partlysunny.gdxlib.ecs.component.ai.behaviours.BasicWanderBehaviour;
 import me.partlysunny.gdxlib.ecs.component.ai.behaviours.RaycastAvoidanceSettings;
 import me.partlysunny.gdxlib.ecs.component.physics.Box2DPhysicsComponent;

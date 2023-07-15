@@ -1,7 +1,6 @@
 package me.partlysunny.gdxlib;
 
 import com.badlogic.ashley.core.PooledEngine;
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ai.GdxAI;
@@ -16,7 +15,6 @@ import me.partlysunny.gdxlib.control.ControlHub;
 import me.partlysunny.gdxlib.ecs.GameWorld;
 import me.partlysunny.gdxlib.ecs.systems.LateDestroyer;
 import me.partlysunny.gdxlib.ecs.systems.render.BatchSet;
-import me.partlysunny.gdxlib.tmx.TileMapInstance;
 import me.partlysunny.gdxlib.tmx.TileMapManager;
 import me.partlysunny.gdxlib.util.Debug;
 import me.partlysunny.gdxlib.util.camera.CameraHandler;

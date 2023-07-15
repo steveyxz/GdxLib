@@ -21,6 +21,7 @@ public class TileMapManager {
     /**
      * Spawns all objects in all tile maps
      * This will be automatically called by GdxGame.create()
+     *
      * @param world the game world to create the objects in
      */
     public static void spawnObjects(GameWorld world) {

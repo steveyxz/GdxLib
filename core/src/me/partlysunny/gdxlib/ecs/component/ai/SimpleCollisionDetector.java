@@ -14,22 +14,22 @@ public class SimpleCollisionDetector implements RaycastCollisionDetector<Vector2
     private final World world;
     private final SimpleRaycastCallback callback;
 
-    public SimpleCollisionDetector (World world) {
+    public SimpleCollisionDetector(World world) {
         this(world, new SimpleRaycastCallback());
     }
 
-    public SimpleCollisionDetector (World world, SimpleRaycastCallback callback) {
+    public SimpleCollisionDetector(World world, SimpleRaycastCallback callback) {
         this.world = world;
         this.callback = callback;
     }
 
     @Override
-    public boolean collides (Ray<Vector2> ray) {
+    public boolean collides(Ray<Vector2> ray) {
         return findCollision(null, ray);
     }
 
     @Override
-    public boolean findCollision (Collision<Vector2> outputCollision, Ray<Vector2> inputRay) {
+    public boolean findCollision(Collision<Vector2> outputCollision, Ray<Vector2> inputRay) {
         callback.collided = false;
         if (!inputRay.start.epsilonEquals(inputRay.end, MathUtils.FLOAT_ROUNDING_ERROR)) {
             callback.outputCollision = outputCollision;
@@ -46,7 +46,7 @@ public class SimpleCollisionDetector implements RaycastCollisionDetector<Vector2
         }
 
         @Override
-        public float reportRayFixture (Fixture fixture, Vector2 point, Vector2 normal, float fraction) {
+        public float reportRayFixture(Fixture fixture, Vector2 point, Vector2 normal, float fraction) {
             if (outputCollision != null) outputCollision.set(point, normal);
             collided = true;
             return fraction;

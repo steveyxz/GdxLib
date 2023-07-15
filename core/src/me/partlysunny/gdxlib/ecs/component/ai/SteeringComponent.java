@@ -16,18 +16,16 @@ import me.partlysunny.gdxlib.util.VectorMaths;
 public class SteeringComponent implements Component, Pool.Poolable, Steerable<Vector2> {
 
     protected PhysicsComponent physicsBinding;
-    private float boundingRadius;
     protected boolean tagged;
     protected float maxLinearSpeed, maxLinearAcceleration;
     protected float maxAngularSpeed, maxAngularAcceleration;
     protected float speedMultiplier;
     protected float zeroLinearSpeedThreshold;
-
     protected SteeringBehavior<Vector2> behavior;
     protected SteeringAcceleration<Vector2> steeringOutput;
     protected float viewRange;
-
     protected Entity target;
+    private float boundingRadius;
 
     public SteeringComponent() {
         this(null, null, 0, 0, null);
@@ -78,6 +76,10 @@ public class SteeringComponent implements Component, Pool.Poolable, Steerable<Ve
     @Override
     public float getBoundingRadius() {
         return boundingRadius;
+    }
+
+    public void setBoundingRadius(float boundingRadius) {
+        this.boundingRadius = boundingRadius;
     }
 
     @Override
@@ -178,10 +180,6 @@ public class SteeringComponent implements Component, Pool.Poolable, Steerable<Ve
 
     public void setPhysicsBinding(PhysicsComponent physicsBinding) {
         this.physicsBinding = physicsBinding;
-    }
-
-    public void setBoundingRadius(float boundingRadius) {
-        this.boundingRadius = boundingRadius;
     }
 
     public SteeringAcceleration<Vector2> getSteeringOutput() {

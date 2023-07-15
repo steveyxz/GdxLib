@@ -17,8 +17,9 @@ public class ControllerHandler {
 
     /**
      * Subscribes a controller to an action.
+     *
      * @param controller The controller to subscribe.
-     * @param action The action to subscribe to.
+     * @param action     The action to subscribe to.
      */
     public void addController(Controller controller, String action) {
         List<Controller> list = controllers.computeIfAbsent(action, k -> new ArrayList<>());
@@ -27,8 +28,9 @@ public class ControllerHandler {
 
     /**
      * Subscribes a controller to multiple actions.
+     *
      * @param controller The controller to subscribe.
-     * @param actions The actions to subscribe to.
+     * @param actions    The actions to subscribe to.
      */
     public void addControllers(Controller controller, String... actions) {
         for (String action : actions) {
@@ -38,6 +40,7 @@ public class ControllerHandler {
 
     /**
      * Updates all controllers subscribed to the given action.
+     *
      * @param action The action to update.
      */
     public void update(String action) {
@@ -51,6 +54,7 @@ public class ControllerHandler {
 
     /**
      * Removes a controller from all actions.
+     *
      * @param controller The controller to remove.
      */
     public void removeController(EntityController controller) {

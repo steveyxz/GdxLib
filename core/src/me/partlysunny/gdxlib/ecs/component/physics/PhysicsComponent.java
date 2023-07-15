@@ -30,12 +30,14 @@ public interface PhysicsComponent extends Component, Pool.Poolable {
     /**
      * Position in the physics world
      * Will be in world coordinates (metres not pixels)
+     *
      * @return The position in the physics world
      */
     Vector2 getPosition();
 
     /**
      * Center of mass of the entity
+     *
      * @return THe center of mass in meters
      */
     Vector2 getWorldCenter();
@@ -47,6 +49,8 @@ public interface PhysicsComponent extends Component, Pool.Poolable {
      */
     float getRotation();
 
+    void setRotation(float orientation);
+
     /**
      * Rotation in radians
      *
@@ -54,12 +58,10 @@ public interface PhysicsComponent extends Component, Pool.Poolable {
      */
     float getRotationRads();
 
-    void setUserData(Object obj);
+    void setRotationRads(float orientation);
 
     Object getUserData();
 
-    void setRotationRads(float orientation);
-
-    void setRotation(float orientation);
+    void setUserData(Object obj);
 
 }

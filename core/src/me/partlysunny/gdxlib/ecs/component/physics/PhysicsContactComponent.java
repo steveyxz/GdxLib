@@ -7,7 +7,6 @@ import com.badlogic.gdx.utils.Pool;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 
 public class PhysicsContactComponent implements Component, Pool.Poolable {
 

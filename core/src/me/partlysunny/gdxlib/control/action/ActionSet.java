@@ -13,6 +13,7 @@ public class ActionSet {
 
     /**
      * Creates an action set based of a list of actions.
+     *
      * @param actions a list of actions
      * @return an action set containing the given actions
      */
@@ -46,6 +47,7 @@ public class ActionSet {
 
     /**
      * Checks if the action set is active based on the given action context.
+     *
      * @param context the action context
      * @return true if the action set is active, false otherwise
      */

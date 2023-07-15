@@ -4,7 +4,6 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import me.partlysunny.gdxlib.ecs.component.Mappers;
-import me.partlysunny.gdxlib.ecs.component.ai.SteeringComponent;
 import me.partlysunny.gdxlib.ecs.component.physics.Box2DPhysicsComponent;
 import me.partlysunny.gdxlib.ecs.component.standard.TransformComponent;
 import me.partlysunny.gdxlib.util.Physics;

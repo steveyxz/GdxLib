@@ -1,14 +1,11 @@
 package me.partlysunny.gdxlib.ecs.component.ai.behaviours;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ai.steer.Steerable;
 import com.badlogic.gdx.ai.steer.SteeringBehavior;
 import com.badlogic.gdx.ai.steer.behaviors.*;
 import com.badlogic.gdx.ai.steer.utils.rays.CentralRayWithWhiskersConfiguration;
-import com.badlogic.gdx.ai.steer.utils.rays.SingleRayConfiguration;
 import com.badlogic.gdx.math.Vector2;
 import me.partlysunny.gdxlib.GdxGame;
-import me.partlysunny.gdxlib.ecs.component.ai.EnemyRadiusProximity;
 import me.partlysunny.gdxlib.ecs.component.ai.SimpleCollisionDetector;
 import me.partlysunny.gdxlib.ecs.component.ai.SteeringComponent;
 

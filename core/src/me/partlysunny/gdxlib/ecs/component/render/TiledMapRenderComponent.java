@@ -13,7 +13,8 @@ public class TiledMapRenderComponent implements RendererComponent {
         this.renderer = renderer;
     }
 
-    public TiledMapRenderComponent() {}
+    public TiledMapRenderComponent() {
+    }
 
     public TiledMap getMap() {
         return map;

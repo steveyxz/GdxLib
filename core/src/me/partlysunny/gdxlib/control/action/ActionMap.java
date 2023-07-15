@@ -15,6 +15,7 @@ public class ActionMap implements Iterable<String> {
 
     /**
      * Creates an action map based of a list of action name/action set pairs.
+     *
      * @param actions a list of action name/action set pairs
      * @return an action map containing the given actions
      */
@@ -29,7 +30,8 @@ public class ActionMap implements Iterable<String> {
 
     /**
      * Adds an action to the action map.
-     * @param actionName the name of the action
+     *
+     * @param actionName  the name of the action
      * @param actionCodes the user interactions that can trigger the action
      */
     public void addActions(String actionName, Action... actionCodes) {
@@ -43,8 +45,9 @@ public class ActionMap implements Iterable<String> {
 
     /**
      * Adds an action to the action map.
+     *
      * @param actionName the name of the action
-     * @param actionSet the user interactions that can trigger the action as an action set
+     * @param actionSet  the user interactions that can trigger the action as an action set
      */
     public void addActions(String actionName, ActionSet actionSet) {
         if (!hasAction(actionName)) {
@@ -57,6 +60,7 @@ public class ActionMap implements Iterable<String> {
 
     /**
      * Gets the action set associated with the given action name.
+     *
      * @param actionName the name of the action
      * @return the action set associated with the given action name
      */
@@ -66,8 +70,9 @@ public class ActionMap implements Iterable<String> {
 
     /**
      * Checks if the given action is active in the given context.
+     *
      * @param actionName the name of the action
-     * @param context the context in which to check if the action is active
+     * @param context    the context in which to check if the action is active
      * @return true if the action is active in the given context, false otherwise
      */
     public boolean isActive(String actionName, ActionContext context) {
@@ -76,6 +81,7 @@ public class ActionMap implements Iterable<String> {
 
     /**
      * Checks if the action name is being used in the action map.
+     *
      * @param actionName the name of the action to check
      * @return true if the action name is being used in the action map, false otherwise
      */
@@ -85,6 +91,7 @@ public class ActionMap implements Iterable<String> {
 
     /**
      * Removes the action with the given name from the action map.
+     *
      * @param actionName the name of the action to remove
      */
     public void removeAction(String actionName) {
@@ -100,6 +107,7 @@ public class ActionMap implements Iterable<String> {
 
     /**
      * Merges two ActionMaps together.
+     *
      * @param other the ActionMap to merge into this ActionMap
      */
     public void addActions(ActionMap other) {
@@ -110,6 +118,7 @@ public class ActionMap implements Iterable<String> {
 
     /**
      * Returns an iterator over the action names in the action map.
+     *
      * @return an iterator over the action names (the keys) in the action map
      */
     @Override

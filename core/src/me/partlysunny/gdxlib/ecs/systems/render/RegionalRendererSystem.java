@@ -14,7 +14,9 @@ public class RegionalRendererSystem extends RendererSystem<RegionalTextureCompon
 
     @Override
     protected void render(Entity entity, TransformComponent position, @Nullable ScaleComponent scale, RegionalTextureComponent renderComponent, float deltaTime) {
-        if (scale == null) batch.draw(renderComponent.getTextureRegion(), position.getPosition().x, position.getPosition().y, 0, 0, renderComponent.getTextureRegion().getRegionWidth(), renderComponent.getTextureRegion().getRegionHeight(), 1, 1, position.getRotation());
-        else batch.draw(renderComponent.getTextureRegion(), position.getPosition().x, position.getPosition().y, 0, 0, scale.getScale().x, scale.getScale().y, scale.getScaleFactor().x, scale.getScaleFactor().y, position.getRotation());
+        if (scale == null)
+            batch.draw(renderComponent.getTextureRegion(), position.getPosition().x, position.getPosition().y, 0, 0, renderComponent.getTextureRegion().getRegionWidth(), renderComponent.getTextureRegion().getRegionHeight(), 1, 1, position.getRotation());
+        else
+            batch.draw(renderComponent.getTextureRegion(), position.getPosition().x, position.getPosition().y, 0, 0, scale.getScale().x, scale.getScale().y, scale.getScaleFactor().x, scale.getScaleFactor().y, position.getRotation());
     }
 }

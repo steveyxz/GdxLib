@@ -81,18 +81,13 @@ public class Box2DPhysicsComponent implements PhysicsComponent {
     }
 
     @Override
+    public void setRotation(float orientation) {
+        linkedBody.setTransform(linkedBody.getPosition(), (float) FastTrig.toRadians(orientation));
+    }
+
+    @Override
     public float getRotationRads() {
         return linkedBody.getAngle();
-    }
-
-    @Override
-    public void setUserData(Object obj) {
-        linkedBody.setUserData(obj);
-    }
-
-    @Override
-    public Object getUserData() {
-        return linkedBody.getUserData();
     }
 
     @Override
@@ -101,8 +96,13 @@ public class Box2DPhysicsComponent implements PhysicsComponent {
     }
 
     @Override
-    public void setRotation(float orientation) {
-        linkedBody.setTransform(linkedBody.getPosition(), (float) FastTrig.toRadians(orientation));
+    public Object getUserData() {
+        return linkedBody.getUserData();
+    }
+
+    @Override
+    public void setUserData(Object obj) {
+        linkedBody.setUserData(obj);
     }
 
     public float getDecelerationRate() {

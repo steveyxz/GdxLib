@@ -7,6 +7,7 @@ public interface ActionContext {
 
     /**
      * Returns whether or not the given key is currently pressed.
+     *
      * @param keyCode The key code to check. See {@link com.badlogic.gdx.Input.Keys}.
      * @return Whether or not the given key is currently pressed.
      */
@@ -14,6 +15,7 @@ public interface ActionContext {
 
     /**
      * Returns whether or not the given mouse button was pressed this frame.
+     *
      * @param button The button to check. See {@link com.badlogic.gdx.Input.Buttons}.
      * @return Whether or not the given mouse button was pressed this frame.
      */

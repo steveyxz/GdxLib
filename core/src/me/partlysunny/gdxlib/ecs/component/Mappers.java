@@ -3,7 +3,6 @@ package me.partlysunny.gdxlib.ecs.component;
 import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
-import me.partlysunny.gdxlib.ecs.component.ai.DoNotDodgeComponent;
 
 import java.util.HashMap;
 import java.util.Map;

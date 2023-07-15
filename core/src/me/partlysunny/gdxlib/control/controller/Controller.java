@@ -8,6 +8,7 @@ public interface Controller {
     /**
      * Updates the controller with the given action.
      * The action will only be called into this update method if the controller is registered with the ControllerManager with this specific action
+     *
      * @param action the action to update with
      */
     void update(String action);

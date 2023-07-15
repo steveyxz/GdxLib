@@ -7,12 +7,14 @@ import me.partlysunny.gdxlib.control.action.ActionMap;
 import me.partlysunny.gdxlib.control.action.ActionSet;
 import me.partlysunny.gdxlib.control.action.KeyAction;
 import me.partlysunny.gdxlib.ecs.entity.SimpleEntityProvider;
-import me.partlysunny.gdxlib.entities.*;
+import me.partlysunny.gdxlib.entities.EnemyEntity;
+import me.partlysunny.gdxlib.entities.GroundEntity;
+import me.partlysunny.gdxlib.entities.ObstacleEntity;
+import me.partlysunny.gdxlib.entities.PlayerEntity;
 import me.partlysunny.gdxlib.tmx.TileMapInstance;
 import me.partlysunny.gdxlib.tmx.TileMapManager;
 import me.partlysunny.gdxlib.tmx.TmxLoader;
 import me.partlysunny.gdxlib.util.Pair;
-import me.partlysunny.gdxlib.util.Physics;
 import me.partlysunny.gdxlib.util.camera.CameraHandler;
 import me.partlysunny.gdxlib.util.camera.OrthoCameraHandler;
 

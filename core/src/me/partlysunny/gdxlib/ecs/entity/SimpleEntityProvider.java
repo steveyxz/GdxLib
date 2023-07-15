@@ -19,8 +19,9 @@ public abstract class SimpleEntityProvider implements EntityProvider {
 
     /**
      * Creates a singular entity of the given class at the given position.
-     * @param clazz The class of the entity to create.
-     * @param world The world to create the entity in.
+     *
+     * @param clazz          The class of the entity to create.
+     * @param world          The world to create the entity in.
      * @param originPosition The position to create the entity at in pixels.
      * @return The created entity.
      */
@@ -70,7 +71,8 @@ public abstract class SimpleEntityProvider implements EntityProvider {
         }
     }
 
-    protected void addScale(Entity e) {}
+    protected void addScale(Entity e) {
+    }
 
     @Nullable
     protected abstract RendererProvider getRendererProvider();

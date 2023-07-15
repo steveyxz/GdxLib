@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.ai.GdxAI;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
@@ -63,6 +64,7 @@ public abstract class GdxGame extends ApplicationAdapter {
         //Clear the screen
         ScreenUtils.clear(0, 0, 0, 1);
         float delta = Gdx.graphics.getDeltaTime();
+        GdxAI.getTimepiece().update(delta);
         //Update any custom logic that may exist
         update(delta);
         //Update the game world, rendering with a BatchSet
@@ -81,7 +83,7 @@ public abstract class GdxGame extends ApplicationAdapter {
         //Destroy entities that were marked for destruction
         LateDestroyer.update();
         if (isCameraPixelPerfect()) {
-            camera.position.set((int) camera.position.x, (int) camera.position.y, 0);
+            camera.position.set((int) camera.position.x, (int) camera.position.y, 100);
         }
         camera.update();
     }

@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.PooledEngine;
 import me.partlysunny.gdxlib.GdxGame;
 import me.partlysunny.gdxlib.ecs.GameWorld;
 import me.partlysunny.gdxlib.ecs.component.physics.ContactListener;
+import me.partlysunny.gdxlib.ecs.systems.ai.SteeringMovementSystem;
 import me.partlysunny.gdxlib.ecs.systems.physics.PhysicsSystem;
 import me.partlysunny.gdxlib.ecs.systems.physics.PositionSyncerSystem;
 import me.partlysunny.gdxlib.ecs.systems.render.*;
@@ -29,6 +30,8 @@ public final class SystemManager {
         entityWorld.addSystem(new PositionSyncerSystem());
         entityWorld.addSystem(new PhysicsSystem());
         entityWorld.addSystem(new ContactListener(world.getPhysicsWorld()));
+        //AI Systems
+        entityWorld.addSystem(new SteeringMovementSystem());
         Debug.logDebug("Systems Initialized!");
     }
 

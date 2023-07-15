@@ -36,6 +36,16 @@ public class Box2DPhysicsComponent implements PhysicsComponent {
     }
 
     @Override
+    public void applyLinearImpulse(Vector2 impulse) {
+        linkedBody.applyLinearImpulse(impulse, linkedBody.getWorldCenter(), true);
+    }
+
+    @Override
+    public void applyForceToCenter(Vector2 force) {
+        linkedBody.applyForceToCenter(force, true);
+    }
+
+    @Override
     public float getAngularVelocity() {
         return linkedBody.getAngularVelocity();
     }
@@ -46,8 +56,23 @@ public class Box2DPhysicsComponent implements PhysicsComponent {
     }
 
     @Override
+    public void applyAngularImpulse(float impulse) {
+        linkedBody.applyAngularImpulse(impulse, true);
+    }
+
+    @Override
+    public void applyTorque(float torque) {
+        linkedBody.applyTorque(torque, true);
+    }
+
+    @Override
     public Vector2 getPosition() {
         return linkedBody.getPosition();
+    }
+
+    @Override
+    public Vector2 getWorldCenter() {
+        return linkedBody.getWorldCenter();
     }
 
     @Override
@@ -58,6 +83,26 @@ public class Box2DPhysicsComponent implements PhysicsComponent {
     @Override
     public float getRotationRads() {
         return linkedBody.getAngle();
+    }
+
+    @Override
+    public void setUserData(Object obj) {
+        linkedBody.setUserData(obj);
+    }
+
+    @Override
+    public Object getUserData() {
+        return linkedBody.getUserData();
+    }
+
+    @Override
+    public void setRotationRads(float orientation) {
+        linkedBody.setTransform(linkedBody.getPosition(), orientation);
+    }
+
+    @Override
+    public void setRotation(float orientation) {
+        linkedBody.setTransform(linkedBody.getPosition(), (float) FastTrig.toRadians(orientation));
     }
 
     public float getDecelerationRate() {

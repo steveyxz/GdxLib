@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import me.partlysunny.gdxlib.ecs.GameWorld;
+import me.partlysunny.gdxlib.ecs.component.Mappers;
 import me.partlysunny.gdxlib.ecs.component.standard.DestroyComponent;
 
 public class DestroyerSystem extends IteratingSystem {
@@ -17,6 +18,8 @@ public class DestroyerSystem extends IteratingSystem {
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-        world.destroy(entity);
+        DestroyComponent component = Mappers.get(DestroyComponent.class, entity);
+        if (component.getTimeToLive() <= 0) world.destroy(entity);
+        else component.setTimeToLive(component.getTimeToLive() - deltaTime);
     }
 }

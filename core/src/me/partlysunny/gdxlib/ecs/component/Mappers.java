@@ -3,6 +3,7 @@ package me.partlysunny.gdxlib.ecs.component;
 import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
+import me.partlysunny.gdxlib.ecs.component.ai.DoNotDodgeComponent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,4 +31,7 @@ public class Mappers {
         return getComponentMapper(clazz).get(entity);
     }
 
+    public static <T extends Component> boolean has(Class<T> clazz, Entity entity) {
+        return getComponentMapper(clazz).has(entity);
+    }
 }

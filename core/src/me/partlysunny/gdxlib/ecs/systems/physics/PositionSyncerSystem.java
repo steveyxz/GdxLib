@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import me.partlysunny.gdxlib.ecs.component.Mappers;
+import me.partlysunny.gdxlib.ecs.component.ai.SteeringComponent;
 import me.partlysunny.gdxlib.ecs.component.physics.Box2DPhysicsComponent;
 import me.partlysunny.gdxlib.ecs.component.standard.TransformComponent;
 import me.partlysunny.gdxlib.util.Physics;
@@ -21,8 +22,8 @@ public class PositionSyncerSystem extends IteratingSystem {
     }
 
     private void syncBox2D(TransformComponent transformComponent, Box2DPhysicsComponent physicsComponent) {
-        transformComponent.setPosition(Physics.toPixels(physicsComponent.getPosition()));
-        transformComponent.setCenter(Physics.toPixels(physicsComponent.getLinkedBody().getWorldCenter()));
+        transformComponent.setPosition(Physics.toPixels(physicsComponent.getPosition().cpy()));
+        transformComponent.setCenter(Physics.toPixels(physicsComponent.getLinkedBody().getWorldCenter().cpy()));
         transformComponent.setRotation(physicsComponent.getRotation());
     }
 }

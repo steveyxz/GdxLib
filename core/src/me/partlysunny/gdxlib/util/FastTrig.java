@@ -7,7 +7,7 @@ package me.partlysunny.gdxlib.util;
  * @author Various (see javadoc of individual methods for attributions)
  * @since 1.0
  */
-public class FastTrig {
+public final class FastTrig {
     private FastTrig() {
     }
 

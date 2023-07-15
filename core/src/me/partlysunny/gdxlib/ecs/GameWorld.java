@@ -54,6 +54,16 @@ public class GameWorld implements Disposable {
         return body;
     }
 
+    public Entity findEntityWithPhysicsBody(Body body) {
+        for (Entity entity : entityWorld.getEntities()) {
+            Box2DPhysicsComponent physics = Mappers.get(Box2DPhysicsComponent.class, entity);
+            if (physics != null && physics.getLinkedBody().equals(body)) {
+                return entity;
+            }
+        }
+        return null;
+    }
+
     public void destroy(Entity entity) {
         Box2DPhysicsComponent physics = Mappers.get(Box2DPhysicsComponent.class, entity);
         if (physics != null) {

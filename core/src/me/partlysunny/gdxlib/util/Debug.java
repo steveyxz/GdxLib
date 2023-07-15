@@ -9,8 +9,8 @@ import me.partlysunny.gdxlib.GdxGame;
 public class Debug {
 
     private static final Logger LOGGER = new Logger("GdxLib", Logger.DEBUG);
-    private static boolean renderPhysicsDebug = false;
-    private static final Box2DDebugRenderer BOX_2D_DEBUG_RENDERER = new Box2DDebugRenderer();
+    private static boolean renderPhysicsDebug = true;
+    private static final Box2DDebugRenderer BOX_2D_DEBUG_RENDERER = new Box2DDebugRenderer(true, true, true, true, true, true);
 
     public static void setRenderPhysicsDebug(boolean renderPhysicsDebug) {
         Debug.renderPhysicsDebug = renderPhysicsDebug;

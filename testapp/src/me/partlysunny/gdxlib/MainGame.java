@@ -1,13 +1,13 @@
 package me.partlysunny.gdxlib;
 
+import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
 import me.partlysunny.gdxlib.control.action.ActionMap;
 import me.partlysunny.gdxlib.control.action.ActionSet;
 import me.partlysunny.gdxlib.control.action.KeyAction;
 import me.partlysunny.gdxlib.ecs.entity.SimpleEntityProvider;
-import me.partlysunny.gdxlib.entities.GroundEntity;
-import me.partlysunny.gdxlib.entities.PlayerEntity;
+import me.partlysunny.gdxlib.entities.*;
 import me.partlysunny.gdxlib.tmx.TileMapInstance;
 import me.partlysunny.gdxlib.tmx.TileMapManager;
 import me.partlysunny.gdxlib.tmx.TmxLoader;
@@ -19,7 +19,8 @@ import me.partlysunny.gdxlib.util.camera.OrthoCameraHandler;
 public class MainGame extends GdxGame {
     @Override
     protected Vector2 getPhysicsGravity() {
-        return new Vector2(0, -Physics.toMeters(400));
+        //return new Vector2(0, -Physics.toMeters(400));
+        return new Vector2(0, 0);
     }
 
     @Override
@@ -39,8 +40,17 @@ public class MainGame extends GdxGame {
 
     @Override
     protected void createOriginalEntities() {
-        SimpleEntityProvider.createSingular(PlayerEntity.class, gameWorld, new Vector2(0, 0));
+        Entity player = SimpleEntityProvider.createSingular(PlayerEntity.class, gameWorld, new Vector2(0, 0));
         SimpleEntityProvider.createSingular(GroundEntity.class, gameWorld, new Vector2(0, -200));
+        EnemyEntity enemy = new EnemyEntity(gameWorld, player);
+        enemy.createEntity(new Vector2(0, 100));
+        for (int i = 0; i < 20; i++) {
+            SimpleEntityProvider.createSingular(ObstacleEntity.class, gameWorld, new Vector2((float) (Math.random() * 2000 - 1000), (float) (Math.random() * 2000 - 1000)));
+        }
+        for (int i = 0; i < 10; i++) {
+            //SimpleEntityProvider.createSingular(InvisibleObstacleEntity.class, gameWorld, new Vector2((float) (Math.random() * 2000 - 1000), (float) (Math.random() * 2000 - 1000)));
+        }
+
         TileMapInstance test1 = TmxLoader.load("test1.tmx");
         test1.setPosition(new Vector2(-150, -150));
         test1.setScale(new Vector2(4, 4));

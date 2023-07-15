@@ -31,7 +31,7 @@ public class BasicWanderBehaviour implements BehaviourProvider {
         RaycastObstacleAvoidance<Vector2> collisionAvoidance = new RaycastObstacleAvoidance<>(
                 steeringComponent,
                 new CentralRayWithWhiskersConfiguration<>(steeringComponent, raycastAvoidanceSettings.getMainWhiskerLength(), raycastAvoidanceSettings.getSideWhiskerLength(), raycastAvoidanceSettings.getSideWhiskerAngle()),
-                new SimpleCollisionDetector(GdxGame.getInstance().getGameWorld().getPhysicsWorld()),
+                new SimpleCollisionDetector(GdxGame.getInstance().getCurrentScene().getGameWorld().getPhysicsWorld()),
                 raycastAvoidanceSettings.getMinDistanceToAvoid()
         );
         Wander<Vector2> pursue = new Wander<>(steeringComponent).setWanderRadius(1000).setWanderRate(10 * MathUtils.degreesToRadians);

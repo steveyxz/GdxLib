@@ -71,7 +71,7 @@ public class GameWorld implements Disposable {
         }
         ControllerComponent controller = Mappers.get(ControllerComponent.class, entity);
         if (controller != null) {
-            GdxGame.getInstance().getControlHub().getControllerHandler().removeController(controller.getController());
+            GdxGame.getInstance().getCurrentScene().getControlHub().getControllerHandler().removeController(controller.getController());
         }
         entityWorld.removeEntity(entity);
     }

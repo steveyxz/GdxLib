@@ -20,7 +20,7 @@ public final class SystemManager {
         PooledEngine entityWorld = world.getEntityWorld();
 
         entityWorld.addSystem(new DestroyerSystem(world));
-        entityWorld.addSystem(new CameraMoverSystem(GdxGame.getInstance().getCamera()));
+        entityWorld.addSystem(new CameraMoverSystem(GdxGame.getInstance().getCurrentScene().getCamera()));
         //Renderer Systems
         entityWorld.addSystem(new AnimatedRendererSystem(batchSet.getSpriteBatch()));
         entityWorld.addSystem(new RegionalRendererSystem(batchSet.getSpriteBatch()));

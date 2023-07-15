@@ -169,8 +169,8 @@ public class SteeringComponent implements Component, Pool.Poolable, Steerable<Ve
 
     @Override
     public Location<Vector2> newLocation() {
-        if (GdxGame.getInstance() != null)
-            return GdxGame.getInstance().getGameWorld().getEntityWorld().createComponent(SteeringComponent.class);
+        if (GdxGame.getInstance().getCurrentScene() != null)
+            return GdxGame.getInstance().getCurrentScene().getGameWorld().getEntityWorld().createComponent(SteeringComponent.class);
         return new SteeringComponent();
     }
 

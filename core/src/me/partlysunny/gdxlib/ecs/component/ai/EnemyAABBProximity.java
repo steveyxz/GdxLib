@@ -95,7 +95,7 @@ public class EnemyAABBProximity implements Proximity<Vector2>, QueryCallback {
     @Override
     public boolean reportFixture(Fixture fixture) {
         Steerable<Vector2> steerable = getSteerable(fixture);
-        Entity entityWithRigidBody = GdxGame.getInstance().getGameWorld().findEntityWithPhysicsBody(fixture.getBody());
+        Entity entityWithRigidBody = GdxGame.getInstance().getCurrentScene().getGameWorld().findEntityWithPhysicsBody(fixture.getBody());
         if (entityWithRigidBody == null) {
             return true;
         }

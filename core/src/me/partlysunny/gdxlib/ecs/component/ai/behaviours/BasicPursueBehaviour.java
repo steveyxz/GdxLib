@@ -30,7 +30,7 @@ public class BasicPursueBehaviour implements BehaviourProvider {
         RaycastObstacleAvoidance<Vector2> collisionAvoidance = new RaycastObstacleAvoidance<>(
                 steeringComponent,
                 new CentralRayWithWhiskersConfiguration<>(steeringComponent, raycastAvoidanceSettings.getMainWhiskerLength(), raycastAvoidanceSettings.getSideWhiskerLength(), raycastAvoidanceSettings.getSideWhiskerAngle()),
-                new SimpleCollisionDetector(GdxGame.getInstance().getGameWorld().getPhysicsWorld()),
+                new SimpleCollisionDetector(GdxGame.getInstance().getCurrentScene().getGameWorld().getPhysicsWorld()),
                 raycastAvoidanceSettings.getMinDistanceToAvoid()
         );
         Pursue<Vector2> pursue = new Pursue<>(steeringComponent, target);

@@ -55,8 +55,8 @@ public class SteerableObjectComponent extends SteerableAdapter<Vector2> implemen
 
     @Override
     public Location<Vector2> newLocation() {
-        if (GdxGame.getInstance() != null)
-            return GdxGame.getInstance().getGameWorld().getEntityWorld().createComponent(SteerableObjectComponent.class);
+        if (GdxGame.getInstance().getCurrentScene() != null)
+            return GdxGame.getInstance().getCurrentScene().getGameWorld().getEntityWorld().createComponent(SteerableObjectComponent.class);
         return new SteerableObjectComponent();
     }
 

@@ -30,7 +30,7 @@ public class BasicEvadeBehaviour implements BehaviourProvider {
         RaycastObstacleAvoidance<Vector2> collisionAvoidance = new RaycastObstacleAvoidance<>(
                 steeringComponent,
                 new CentralRayWithWhiskersConfiguration<>(steeringComponent, raycastAvoidanceSettings.getMainWhiskerLength(), raycastAvoidanceSettings.getSideWhiskerLength(), raycastAvoidanceSettings.getSideWhiskerAngle()),
-                new SimpleCollisionDetector(GdxGame.getInstance().getGameWorld().getPhysicsWorld()),
+                new SimpleCollisionDetector(GdxGame.getInstance().getCurrentScene().getGameWorld().getPhysicsWorld()),
                 raycastAvoidanceSettings.getMinDistanceToAvoid()
         );
         Evade<Vector2> pursue = new Evade<>(steeringComponent, target);

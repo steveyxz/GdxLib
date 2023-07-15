@@ -16,7 +16,7 @@ public abstract class EntityController implements Controller {
 
     public EntityController(Entity entity, String... actions) {
         this.entity = entity;
-        GdxGame.getInstance().getControlHub().getControllerHandler().addControllers(this, actions);
+        GdxGame.getInstance().getCurrentScene().getControlHub().getControllerHandler().addControllers(this, actions);
     }
 
     @Override

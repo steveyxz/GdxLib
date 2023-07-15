@@ -109,6 +109,6 @@ public class BodyBuilder {
     }
 
     public Body build() {
-        return GdxGame.getInstance().getGameWorld().createBody(bodyDef, fixtures.toArray(new FixtureDef[0]));
+        return GdxGame.getInstance().getCurrentScene().getGameWorld().createBody(bodyDef, fixtures.toArray(new FixtureDef[0]));
     }
 }

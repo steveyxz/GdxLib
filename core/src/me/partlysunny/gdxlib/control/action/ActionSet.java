@@ -5,11 +5,19 @@ import java.util.List;
 
 /**
  * A set of different user actions
- * TODO add options for exclusivity and inclusivity (i.e. difference between "W or UpArrow" and "Ctrl+L")
  */
 public class ActionSet {
 
     private final List<Action> actions = new ArrayList<>();
+    private final VerificationType verificationType;
+
+    public ActionSet() {
+        this(VerificationType.ANY);
+    }
+
+    public ActionSet(VerificationType verificationType) {
+        this.verificationType = verificationType;
+    }
 
     /**
      * Creates an action set based of a list of actions.
@@ -52,12 +60,34 @@ public class ActionSet {
      * @return true if the action set is active, false otherwise
      */
     public boolean verify(ActionContext context) {
+        if (verificationType == VerificationType.ANY) {
+            return verifyAny(context);
+        } else if (verificationType == VerificationType.ALL) {
+            return verifyAll(context);
+        }
+        return false;
+    }
+
+    private boolean verifyAll(ActionContext context) {
         for (Action action : actions) {
             if (!action.isActive(context)) {
                 return false;
             }
         }
         return true;
+    }
+
+    private boolean verifyAny(ActionContext context) {
+        for (Action action : actions) {
+            if (action.isActive(context)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public enum VerificationType {
+        ALL, ANY
     }
 
 }

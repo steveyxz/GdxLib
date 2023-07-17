@@ -1,10 +1,14 @@
 package me.partlysunny.gdxlib.flappyBird;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
 import me.partlysunny.gdxlib.GdxGame;
 import me.partlysunny.gdxlib.Scene;
+import me.partlysunny.gdxlib.control.action.ActionMap;
+import me.partlysunny.gdxlib.control.action.KeyAction;
 import me.partlysunny.gdxlib.ecs.entity.SimpleEntityProvider;
-import me.partlysunny.gdxlib.flappyBird.BaseEntity;
+import me.partlysunny.gdxlib.flappyBird.entites.BackgroundEntity;
+import me.partlysunny.gdxlib.flappyBird.entites.BaseEntity;
 import me.partlysunny.gdxlib.util.Physics;
 import me.partlysunny.gdxlib.util.camera.CameraHandler;
 import me.partlysunny.gdxlib.util.camera.OrthoCameraHandler;
@@ -36,6 +40,8 @@ public class FlappyBirdScene extends Scene {
         instance.add("point", new SoundResource("flappy-bird-assets/audio/point.ogg"));
         instance.add("swoosh", new SoundResource("flappy-bird-assets/audio/swoosh.ogg"));
         instance.add("wing", new SoundResource("flappy-bird-assets/audio/wing.ogg"));
+
+        ActionMap actions = new ActionMap.Builder().addAction("flap", new KeyAction(Input.Keys.SPACE)).addAction("restart", new KeyAction(Input.Keys.R)).build();
     }
 
     @Override

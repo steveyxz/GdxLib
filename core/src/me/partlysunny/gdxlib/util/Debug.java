@@ -10,7 +10,7 @@ public class Debug {
 
     private static final Logger LOGGER = new Logger("GdxLib", Logger.DEBUG);
     private static final Box2DDebugRenderer BOX_2D_DEBUG_RENDERER = new Box2DDebugRenderer(true, true, true, true, true, true);
-    private static boolean renderPhysicsDebug = true;
+    private static boolean renderPhysicsDebug = false;
 
     public static void setRenderPhysicsDebug(boolean renderPhysicsDebug) {
         Debug.renderPhysicsDebug = renderPhysicsDebug;

@@ -1,5 +1,6 @@
 package me.partlysunny.gdxlib.testOne;
 
+import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
@@ -29,6 +30,11 @@ public class TestOneScene extends Scene {
     protected Vector2 getPhysicsGravity() {
         //return new Vector2(0, -Physics.toMeters(400));
         return new Vector2(0, 0);
+    }
+
+    @Override
+    protected void initializeSystems(Engine engine) {
+
     }
 
     @Override

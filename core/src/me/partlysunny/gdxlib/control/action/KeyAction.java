@@ -7,13 +7,23 @@ public class KeyAction implements Action {
 
     //Use magic values from Input.Keys class
     private final int keycode;
+    private final boolean just;
 
     public KeyAction(int keycode) {
+        this(keycode, false);
+    }
+
+    public KeyAction(int keycode, boolean just) {
         this.keycode = keycode;
+        this.just = just;
     }
 
     @Override
     public boolean isActive(ActionContext context) {
-        return context.isKeyDown(keycode);
+        if (just) {
+            return context.isKeyButtonJustDown(keycode);
+        } else {
+            return context.isKeyDown(keycode);
+        }
     }
 }

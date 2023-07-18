@@ -27,6 +27,7 @@ allprojects {
         aiVersion = '1.8.2'
         gdxControllersVersion = '2.2.1'
         screenManagerVersion = '0.6.9'
+        visuiVersion = '1.5.2'
     }
 
     repositories {
@@ -65,5 +66,6 @@ project(":core") {
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         api "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
         api "com.github.crykn:libgdx-screenmanager:v$screenManagerVersion"
+        api "com.kotcrab.vis:vis-ui:$visuiVersion"
     }
 }

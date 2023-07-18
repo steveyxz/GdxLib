@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Disposable;
 import me.partlysunny.gdxlib.GdxGame;
 import me.partlysunny.gdxlib.ecs.component.Mappers;
@@ -20,10 +21,12 @@ public class GameWorld implements Disposable {
     private static final float STEP_TIME = 1f / 30f;
     private final World physicsWorld;
     private final PooledEngine entityWorld;
+    private final Stage uiWorld;
 
-    public GameWorld(World physicsWorld, PooledEngine entityWorld, BatchSet batchSet) {
+    public GameWorld(World physicsWorld, PooledEngine entityWorld, BatchSet batchSet, Stage uiWorld) {
         this.physicsWorld = physicsWorld;
         this.entityWorld = entityWorld;
+        this.uiWorld = uiWorld;
         SystemManager.init(this, batchSet);
     }
 
@@ -35,15 +38,22 @@ public class GameWorld implements Disposable {
         return entityWorld;
     }
 
+    public Stage getUiWorld() {
+        return uiWorld;
+    }
+
     public void update(float delta) {
         physicsWorld.step(STEP_TIME, 6, 2);
         entityWorld.update(delta);
+        uiWorld.act(delta);
+        uiWorld.draw();
     }
 
     @Override
     public void dispose() {
         physicsWorld.dispose();
         entityWorld.clearPools();
+        uiWorld.dispose();
     }
 
     public Body createBody(BodyDef def, FixtureDef... fixtures) {

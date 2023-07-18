@@ -15,4 +15,14 @@ public class GdxContext implements ActionContext {
     public boolean isMouseButtonDown(int button) {
         return Gdx.input.isButtonPressed(button);
     }
+
+    @Override
+    public boolean isMouseButtonJustDown(int button) {
+        return Gdx.input.isButtonJustPressed(button);
+    }
+
+    @Override
+    public boolean isKeyButtonJustDown(int keyCode) {
+        return Gdx.input.isKeyJustPressed(keyCode);
+    }
 }

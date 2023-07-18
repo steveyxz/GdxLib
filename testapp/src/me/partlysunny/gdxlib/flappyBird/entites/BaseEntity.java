@@ -12,6 +12,7 @@ import me.partlysunny.gdxlib.ecs.component.render.providers.SimpleTextureCompone
 import me.partlysunny.gdxlib.ecs.component.standard.ScaleComponent;
 import me.partlysunny.gdxlib.ecs.entity.SimpleEntityProvider;
 import me.partlysunny.gdxlib.util.BodyBuilder;
+import me.partlysunny.gdxlib.util.Physics;
 import me.partlysunny.gdxlib.util.ShapeBuilder;
 import me.partlysunny.gdxlib.util.resource.ResourceManager;
 
@@ -27,7 +28,7 @@ public class BaseEntity extends SimpleEntityProvider {
 
     @Override
     protected PhysicsProvider getPhysicsProvider(Vector2 originPosition) {
-        return new Box2DPhysicsProvider(BodyBuilder.create(originPosition).bodyType(BodyDef.BodyType.StaticBody).addShape(ShapeBuilder.radialRect(Vector2.Zero, new Vector2(1200, 400))).build(), 0);
+        return new Box2DPhysicsProvider(BodyBuilder.create(originPosition).bodyType(BodyDef.BodyType.StaticBody).addShape(ShapeBuilder.rect(Vector2.Zero, Physics.toMeters(new Vector2(600, 200)))).build(), 0);
     }
 
     @Override
@@ -36,7 +37,7 @@ public class BaseEntity extends SimpleEntityProvider {
         scaleComponent.setScale(new Vector2(600, 200));
         e.add(scaleComponent);
         ZComponent zComponent = world.getEntityWorld().createComponent(ZComponent.class);
-        zComponent.setZIndex(1);
+        zComponent.setZIndex(2);
         e.add(zComponent);
     }
 

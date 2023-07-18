@@ -105,6 +105,11 @@ public class Box2DPhysicsComponent implements PhysicsComponent {
         linkedBody.setUserData(obj);
     }
 
+    @Override
+    public void setPosition(Vector2 vector2) {
+        linkedBody.setTransform(vector2, linkedBody.getAngle());
+    }
+
     public float getDecelerationRate() {
         return decelerationRate;
     }

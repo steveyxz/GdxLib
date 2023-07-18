@@ -54,8 +54,9 @@ public class ShapeBuilder {
      */
     public static PolygonShape rect(Vector2 pos, Vector2 dims) {
         PolygonShape polygonShape = new PolygonShape();
-        pos.add(dims.x / 2, dims.y / 2);
-        polygonShape.setAsBox(pos.x, pos.y, dims.scl(0.5f), 0);
+        Vector2 clone = pos.cpy();
+        clone.add(dims.x / 2, dims.y / 2);
+        polygonShape.setAsBox(clone.x, clone.y, dims.scl(0.5f), 0);
         return polygonShape;
     }
 

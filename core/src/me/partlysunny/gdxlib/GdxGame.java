@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.kotcrab.vis.ui.VisUI;
 import de.eskalon.commons.core.ManagedGame;
 import de.eskalon.commons.screen.ManagedScreen;
 import de.eskalon.commons.screen.ScreenManager;
@@ -41,6 +42,7 @@ public abstract class GdxGame extends ManagedGame<ManagedScreen, ScreenTransitio
     @Override
     public void create() {
         super.create();
+        VisUI.load();
         Debug.logDebug("Initializing sprite batches...");
         batchSet = new BatchSet(new SpriteBatch(), new PolygonSpriteBatch());
         instance = this;
@@ -65,6 +67,7 @@ public abstract class GdxGame extends ManagedGame<ManagedScreen, ScreenTransitio
     public void dispose() {
         super.dispose();
         batchSet.dispose();
+        VisUI.dispose();
     }
 
     public Scene getCurrentScene() {

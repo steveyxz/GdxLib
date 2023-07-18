@@ -14,11 +14,27 @@ public interface ActionContext {
     boolean isKeyDown(int keyCode);
 
     /**
-     * Returns whether or not the given mouse button was pressed this frame.
+     * Returns whether or not the given mouse button is currently pressed this frame.
      *
      * @param button The button to check. See {@link com.badlogic.gdx.Input.Buttons}.
      * @return Whether or not the given mouse button was pressed this frame.
      */
     boolean isMouseButtonDown(int button);
+
+    /**
+     * Returns whether or not the given mouse button was pressed this frame.
+     *
+     * @param button The button to check. See {@link com.badlogic.gdx.Input.Buttons}.
+     * @return Whether or not the given mouse button was pressed this frame.
+     */
+    boolean isMouseButtonJustDown(int button);
+
+    /**
+     * Returns whether or not the given key was pressed this frame.
+     *
+     * @param keyCode The keycode to check. See {@link com.badlogic.gdx.Input.Keys}.
+     * @return Whether or not the given key was pressed this frame.
+     */
+    boolean isKeyButtonJustDown(int keyCode);
 
 }

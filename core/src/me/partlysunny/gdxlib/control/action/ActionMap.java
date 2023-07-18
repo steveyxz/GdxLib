@@ -33,14 +33,16 @@ public class ActionMap implements Iterable<String> {
      *
      * @param actionName  the name of the action
      * @param actionCodes the user interactions that can trigger the action
+     * @return the action map
      */
-    public void addActions(String actionName, Action... actionCodes) {
+    public ActionMap addActions(String actionName, Action... actionCodes) {
         if (!hasAction(actionName)) {
             actionMap.put(actionName, new ActionSet());
         }
         for (Action action : actionCodes) {
             actionMap.get(actionName).addAction(action);
         }
+        return this;
     }
 
     /**
@@ -48,14 +50,16 @@ public class ActionMap implements Iterable<String> {
      *
      * @param actionName the name of the action
      * @param actionSet  the user interactions that can trigger the action as an action set
+     * @return the action map
      */
-    public void addActions(String actionName, ActionSet actionSet) {
+    public ActionMap addActions(String actionName, ActionSet actionSet) {
         if (!hasAction(actionName)) {
             actionMap.put(actionName, new ActionSet());
         }
         for (Action action : actionSet.getActions()) {
             actionMap.get(actionName).addAction(action);
         }
+        return this;
     }
 
     /**
@@ -109,11 +113,13 @@ public class ActionMap implements Iterable<String> {
      * Merges two ActionMaps together.
      *
      * @param other the ActionMap to merge into this ActionMap
+     * @return the merged ActionMap
      */
-    public void addActions(ActionMap other) {
+    public ActionMap addActions(ActionMap other) {
         for (Map.Entry<String, ActionSet> entry : other.actionMap.entrySet()) {
             addActions(entry.getKey(), entry.getValue());
         }
+        return this;
     }
 
     /**

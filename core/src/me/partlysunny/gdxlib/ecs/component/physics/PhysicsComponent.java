@@ -64,4 +64,5 @@ public interface PhysicsComponent extends Component, Pool.Poolable {
 
     void setUserData(Object obj);
 
+    void setPosition(Vector2 vector2);
 }

@@ -6,6 +6,8 @@ public class VisibilityComponent implements Component {
 
     private boolean visible;
 
+    public VisibilityComponent() {}
+
     public VisibilityComponent(boolean visible) {
         this.visible = visible;
     }

@@ -8,7 +8,9 @@ import me.partlysunny.gdxlib.ecs.component.Mappers;
 import me.partlysunny.gdxlib.ecs.component.physics.Box2DPhysicsComponent;
 import me.partlysunny.gdxlib.ecs.component.render.SimpleTextureComponent;
 import me.partlysunny.gdxlib.ecs.component.standard.TransformComponent;
+import me.partlysunny.gdxlib.flappyBird.GameState;
 import me.partlysunny.gdxlib.flappyBird.components.BirdComponent;
+import me.partlysunny.gdxlib.util.Physics;
 import me.partlysunny.gdxlib.util.resource.ResourceManager;
 
 public class BirdTextureUpdater extends IteratingSystem {
@@ -26,6 +28,14 @@ public class BirdTextureUpdater extends IteratingSystem {
     protected void processEntity(Entity entity, float deltaTime) {
         SimpleTextureComponent texture = Mappers.get(SimpleTextureComponent.class, entity);
         Box2DPhysicsComponent physics = Mappers.get(Box2DPhysicsComponent.class, entity);
+        if (!GameState.isGameStarted) {
+            texture.setTexture(ResourceManager.getInstance().getTexture("bird_midflap"));
+            physics.setPosition(new Vector2(initialX, Physics.toMeters(320)));
+            physics.setRotation(0);
+            physics.setAngularVelocity(0);
+            physics.setLinearVelocity(Vector2.Zero);
+            return;
+        }
         float yVelocity = physics.getLinearVelocity().y;
         if (yVelocity > 0) {
             texture.setTexture(ResourceManager.getInstance().getTexture("bird_upflap"));

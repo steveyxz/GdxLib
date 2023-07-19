@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import me.partlysunny.gdxlib.ecs.GameWorld;
 import me.partlysunny.gdxlib.ecs.component.physics.providers.Box2DPhysicsProvider;
 import me.partlysunny.gdxlib.ecs.component.physics.providers.PhysicsProvider;
+import me.partlysunny.gdxlib.ecs.component.render.VisibilityComponent;
 import me.partlysunny.gdxlib.ecs.component.render.ZComponent;
 import me.partlysunny.gdxlib.ecs.component.render.providers.RendererProvider;
 import me.partlysunny.gdxlib.ecs.component.render.providers.SimpleTextureComponentProvider;
@@ -18,8 +19,13 @@ import me.partlysunny.gdxlib.util.ShapeBuilder;
 import me.partlysunny.gdxlib.util.resource.ResourceManager;
 
 public class PipeEntity extends SimpleEntityProvider {
-    public PipeEntity(GameWorld world) {
+    private final LevelComponent.Side side;
+    private final int id;
+
+    public PipeEntity(GameWorld world, LevelComponent.Side side, int id) {
         super(world);
+        this.side = side;
+        this.id = id;
     }
 
     @Override
@@ -38,10 +44,14 @@ public class PipeEntity extends SimpleEntityProvider {
         scaleComponent.setScale(new Vector2(52, 320));
         e.add(scaleComponent);
         LevelComponent levelComponent = world.getEntityWorld().createComponent(LevelComponent.class);
-        levelComponent.setSide(LevelComponent.Side.random());
+        levelComponent.setSide(side);
+        levelComponent.setId(id);
         e.add(levelComponent);
         ZComponent zComponent = world.getEntityWorld().createComponent(ZComponent.class);
         zComponent.setZIndex(1);
         e.add(zComponent);
+        VisibilityComponent visibilityComponent = world.getEntityWorld().createComponent(VisibilityComponent.class);
+        visibilityComponent.setVisible(true);
+        e.add(visibilityComponent);
     }
 }

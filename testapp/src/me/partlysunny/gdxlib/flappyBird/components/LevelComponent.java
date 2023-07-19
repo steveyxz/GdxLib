@@ -2,6 +2,9 @@ package me.partlysunny.gdxlib.flappyBird.components;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.utils.Pool;
+import me.partlysunny.gdxlib.util.RandomUtils;
+
+import java.util.Random;
 
 public class LevelComponent implements Component, Pool.Poolable {
 
@@ -15,6 +18,7 @@ public class LevelComponent implements Component, Pool.Poolable {
     }
 
     private Side side;
+    private int id;
 
     public LevelComponent() {
 
@@ -28,8 +32,17 @@ public class LevelComponent implements Component, Pool.Poolable {
         this.side = side;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public void reset() {
         side = null;
+        id = 0;
     }
 }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import me.partlysunny.gdxlib.ecs.GameWorld;
 import me.partlysunny.gdxlib.ecs.component.control.ControllerComponent;
+import me.partlysunny.gdxlib.ecs.component.physics.PhysicsContactComponent;
 import me.partlysunny.gdxlib.ecs.component.physics.providers.Box2DPhysicsProvider;
 import me.partlysunny.gdxlib.ecs.component.physics.providers.PhysicsProvider;
 import me.partlysunny.gdxlib.ecs.component.render.ZComponent;
@@ -12,6 +13,7 @@ import me.partlysunny.gdxlib.ecs.component.render.providers.RendererProvider;
 import me.partlysunny.gdxlib.ecs.component.render.providers.SimpleTextureComponentProvider;
 import me.partlysunny.gdxlib.ecs.component.standard.ScaleComponent;
 import me.partlysunny.gdxlib.ecs.entity.SimpleEntityProvider;
+import me.partlysunny.gdxlib.flappyBird.GameState;
 import me.partlysunny.gdxlib.flappyBird.components.BirdComponent;
 import me.partlysunny.gdxlib.flappyBird.components.FlapController;
 import me.partlysunny.gdxlib.util.BodyBuilder;
@@ -48,5 +50,13 @@ public class BirdEntity extends SimpleEntityProvider {
         e.add(flap);
         BirdComponent bird = world.getEntityWorld().createComponent(BirdComponent.class);
         e.add(bird);
+        PhysicsContactComponent contact = world.getEntityWorld().createComponent(PhysicsContactComponent.class);
+        contact.setContactEnter((entity, other) -> {
+            if (other.getComponent(BirdComponent.class) != null) {
+                GameState.isGameStarted = false;
+                GameState.isGameOver = true;
+            }
+        });
+        e.add(contact);
     }
 }

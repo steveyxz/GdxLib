@@ -22,11 +22,12 @@ public class ActionSet {
     /**
      * Creates an action set based of a list of actions.
      *
+     * @param verification the verification type
      * @param actions a list of actions
      * @return an action set containing the given actions
      */
-    public static ActionSet of(Action... actions) {
-        ActionSet actionSet = new ActionSet();
+    public static ActionSet of(VerificationType verification, Action... actions) {
+        ActionSet actionSet = new ActionSet(verification);
         for (Action action : actions) {
             actionSet.addAction(action);
         }

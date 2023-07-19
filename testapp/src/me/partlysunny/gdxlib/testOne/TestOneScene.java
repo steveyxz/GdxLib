@@ -10,10 +10,6 @@ import me.partlysunny.gdxlib.control.action.ActionMap;
 import me.partlysunny.gdxlib.control.action.ActionSet;
 import me.partlysunny.gdxlib.control.action.KeyAction;
 import me.partlysunny.gdxlib.ecs.entity.SimpleEntityProvider;
-import me.partlysunny.gdxlib.testOne.EnemyEntity;
-import me.partlysunny.gdxlib.testOne.GroundEntity;
-import me.partlysunny.gdxlib.testOne.ObstacleEntity;
-import me.partlysunny.gdxlib.testOne.PlayerEntity;
 import me.partlysunny.gdxlib.tmx.TileMapInstance;
 import me.partlysunny.gdxlib.tmx.TileMapManager;
 import me.partlysunny.gdxlib.tmx.TmxLoader;
@@ -40,10 +36,10 @@ public class TestOneScene extends Scene {
     @Override
     protected void loadResources() {
         controlHub.getActionMap().addActions(ActionMap.of(
-                Pair.of("up", ActionSet.of(new KeyAction(Input.Keys.W))),
-                Pair.of("left", ActionSet.of(new KeyAction(Input.Keys.A))),
-                Pair.of("down", ActionSet.of(new KeyAction(Input.Keys.S))),
-                Pair.of("right", ActionSet.of(new KeyAction(Input.Keys.D)))
+                Pair.of("up", ActionSet.of(ActionSet.VerificationType.ANY, new KeyAction(Input.Keys.W))),
+                Pair.of("left", ActionSet.of(ActionSet.VerificationType.ANY, new KeyAction(Input.Keys.A))),
+                Pair.of("down", ActionSet.of(ActionSet.VerificationType.ANY, new KeyAction(Input.Keys.S))),
+                Pair.of("right", ActionSet.of(ActionSet.VerificationType.ANY, new KeyAction(Input.Keys.D)))
         ));
     }
 
